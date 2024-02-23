@@ -1,0 +1,115 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif; /* Updated font for a modern look */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transitions for interactions */
+}
+
+.login-container:hover {
+    transform: translateY(-5px); /* Slight raise effect on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+}
+
+.login-form .form-group {
+    position: relative; /* For icon positioning */
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333; /* Darker label color for better readability */
+    font-weight: 600; /* Bold label text */
+}
+
+.login-form input[type="text"],
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 15px 10px 15px 40px; /* Increased padding for aesthetics */
+    border: 2px solid #ccc; /* Thicker border for focus state */
+    border-radius: 5px; /* Rounded borders for a modern look */
+    margin-top: 5px;
+    transition: border-color 0.3s ease-in-out; /* Smooth transition for border color */
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="email"]:focus,
+.login-form input[type="password"]:focus {
+    border-color: #007bff; /* Highlight focus state */
+    outline: none; /* Remove default focus outline */
+}
+
+.error p {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+    font-weight: 600; /* Bold button text */
+    transition: background-color 0.3s ease-in-out; /* Smooth background color transition */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.account-link {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px; /* Larger text for better readability */
+}
+
+a {
+    color: #007bff;
+    transition: color 0.3s ease-in-out; /* Smooth color transition */
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        padding: 15px;
+        border-radius: 5px; /* Adjusted for smaller screens */
+    }
+}
+
+/* Icon styles for input fields */
+.login-form .form-group i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ccc; /* Icon color */
+    transition: color 0.3s ease-in-out;
+}
+
+.login-form input:focus + i {
+    color: #007bff; /* Change icon color on input focus */
+}

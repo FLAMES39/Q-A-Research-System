@@ -1,0 +1,74 @@
+/* src/app/app.component.css */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 60px;
+    /* background-image: ; */
+}
+
+.navbar {
+    background-color: blue;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box; 
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+}
+
+.app-container {
+    overflow-x: hidden; 
+}
+
+.navleft, .navRight {
+    display: flex;
+    gap: 2rem;
+    color: white;
+}
+
+.navRight a, .navleft a {
+    color: white;
+    text-decoration: none;
+}
+
+.active {
+    color: black;
+    font-weight: bolder;
+}
+
+.main-image img {
+    width: 100%; 
+    height: 70vh; 
+    display: block;
+   
+}
+
+
+app-footer {
+    margin-top: auto;
+}
+.profile-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: white; 
+  }
+  
+  .profile-icon {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 2px solid white; 
+  }
+  
