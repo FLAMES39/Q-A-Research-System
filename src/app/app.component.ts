@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { FooterComponent } from './Components/footer/footer.component';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import { FooterComponent } from './Components/footer/footer.component';
 })
 export class AppComponent {
   title = 'Q';
-  constructor( private Router:Router ,private route:ActivatedRoute){
+  constructor( public authservice:AuthService , private Router:Router ,private route:ActivatedRoute ){
 
   }
 }

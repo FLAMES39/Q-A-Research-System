@@ -1,0 +1,16 @@
+.sidebar{
+    width: 30%;
+    background-color: gray;
+    border: 2px;
+    border-color: solid black;
+}
+.departments{
+    width: 70%;
+    background-color: rgb(230, 217, 173);
+    border: 2px;
+    border-color: solid blue;
+}
+body{
+    display: flex;
+    justify-content: space-between;
+}

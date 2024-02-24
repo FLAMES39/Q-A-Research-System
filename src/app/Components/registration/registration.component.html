@@ -3,7 +3,7 @@
         <form class="login-form" (ngSubmit)="onSubmit()" [formGroup]="form">
             <div class="form-group">
                 <label for="Name">Name:</label>
-                <input type="text" id="Name" formControlName="Name" required>
+                <input class="" type="text" id="Name" formControlName="Name" required>
                 <div class="error" *ngIf="!form.get('Name')?.valid && form.get('Name')?.touched">
                     <p *ngIf="form.get('Name')!.errors!['required']">Name is required</p>
                     <p *ngIf="form.get('Name')!.errors!['NameUnallowed']">Name is not allowed</p>
@@ -19,14 +19,14 @@
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" formControlName="password" required>
-                <div class="error" *ngIf="!form.get('password')?.valid && form.get('password')?.touched">
-                    <p *ngIf="form.get('password')!.errors!['required']">Password is required</p>
-                    <p *ngIf="form.get('password')!.errors!['passwordUnallowed']">Password is not allowed</p>
+                <input type="Password" id="password" formControlName="Password" required>
+                <div class="error" *ngIf="!form.get('Password')?.valid && form.get('Password')?.touched">
+                    <p *ngIf="form.get('Password')!.errors!['required']">Password is required</p>
+                    <p *ngIf="form.get('Password')!.errors!['passwordUnallowed']">Password is not allowed</p>
                 </div>
             </div>
             <div class="form-actions">
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" class="btn btn-primary" (click)="submit()">Register</button>
                 <p class="account-link">I have an account..... <a href="/login">Login</a></p>
             </div>
         </form>

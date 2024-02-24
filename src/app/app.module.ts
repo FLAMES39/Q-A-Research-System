@@ -7,7 +7,8 @@ import { RouterModule } from '@angular/router';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-;
+import { userEffects } from './states/Effects/userEffects';
+import { userReducer } from './states/Reducers/userReducer';
 
 @NgModule({
     declarations: [
@@ -21,9 +22,10 @@ import { EffectsModule } from '@ngrx/effects';
         AppRoutingModule,
         HttpClientModule,
         RouterModule,
+        StoreModule.forRoot({user:userReducer}),
+        EffectsModule.forRoot([userEffects]),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-        StoreModule.forRoot([]),
-        EffectsModule.forRoot([])
+    
 
     ]
 })

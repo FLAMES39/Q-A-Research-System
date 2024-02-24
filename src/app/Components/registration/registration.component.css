@@ -1,56 +1,72 @@
 body, html {
-    height: 100%;
+    height: 100vh;
     margin: 0;
-    font-family: 'Poppins', sans-serif; /* Updated font for a modern look */
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #f4f4f4;
+    background-image: url('https://d2o2utebsixu4k.cloudfront.net/media/images/blogs/share_image/8846ed9a-55b2-4486-b1ee-977703b7611f.jpg');
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .login-container {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transitions for interactions */
+    width: 40%;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .login-container:hover {
-    transform: translateY(-5px); /* Slight raise effect on hover */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
 .login-form .form-group {
-    position: relative; /* For icon positioning */
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    position: relative;
 }
 
 .login-form label {
     display: block;
-    margin-bottom: 10px;
-    color: #333; /* Darker label color for better readability */
-    font-weight: 600; /* Bold label text */
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 600;
+    font-size: 18px;
 }
 
 .login-form input[type="text"],
 .login-form input[type="email"],
 .login-form input[type="password"] {
-    width: 100%;
-    padding: 15px 10px 15px 40px; /* Increased padding for aesthetics */
-    border: 2px solid #ccc; /* Thicker border for focus state */
-    border-radius: 5px; /* Rounded borders for a modern look */
-    margin-top: 5px;
-    transition: border-color 0.3s ease-in-out; /* Smooth transition for border color */
+    width: 80%;
+    padding: 12px 20px 12px 45px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    background-color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 16px;
 }
 
 .login-form input[type="text"]:focus,
 .login-form input[type="email"]:focus,
 .login-form input[type="password"]:focus {
-    border-color: #007bff; /* Highlight focus state */
-    outline: none; /* Remove default focus outline */
+    border-color: #007bff;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.2);
+    outline: none;
+}
+
+.login-form .form-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #bbb;
+    font-size: 20px;
 }
 
 .error p {
@@ -59,33 +75,33 @@ body, html {
     margin-top: 5px;
 }
 
-.btn-primary {
+.btn{
     background-color: #007bff;
     color: white;
     padding: 12px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%;
+    width: 80%;
     display: block;
     margin-top: 20px;
-    font-weight: 600; /* Bold button text */
-    transition: background-color 0.3s ease-in-out; /* Smooth background color transition */
+    font-weight: 600;
+    transition: background-color 0.3s ease-in-out; 
 }
 
-.btn-primary:hover {
+.btn:hover {
     background-color: #0056b3;
 }
 
 .account-link {
     margin-top: 20px;
     text-align: center;
-    font-size: 16px; /* Larger text for better readability */
+    font-size: 16px; 
 }
 
 a {
     color: #007bff;
-    transition: color 0.3s ease-in-out; /* Smooth color transition */
+    transition: color 0.3s ease-in-out; 
 }
 
 a:hover {
@@ -96,20 +112,20 @@ a:hover {
 @media (max-width: 768px) {
     .login-container {
         padding: 15px;
-        border-radius: 5px; /* Adjusted for smaller screens */
+        border-radius: 5px; 
     }
 }
 
-/* Icon styles for input fields */
+
 .login-form .form-group i {
     position: absolute;
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    color: #ccc; /* Icon color */
+    color: #ccc; 
     transition: color 0.3s ease-in-out;
 }
 
 .login-form input:focus + i {
-    color: #007bff; /* Change icon color on input focus */
+    color: #007bff; 
 }

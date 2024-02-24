@@ -5,6 +5,6 @@ export const routes: Routes = [
     {path:'footer',loadComponent:()=>import('../app/Components/footer/footer.component').then(f=>f.FooterComponent) },
     {path:'login', loadComponent:()=>import('../app/Components/login/login.component').then(l=>l.LoginComponent)},
     {path:'register',loadComponent:()=>import('../app/Components/registration/registration.component').then(r=>r.RegistrationComponent)},
-    {path:'courses',loadComponent:()=>import('../app/Components/courses/courses.component').then(u=>u.CoursesComponent)}
+    {path:'courses',loadComponent:()=>import('./Components/courses/courses.component').then(u=>u.CoursesComponent)}
 
 ];
