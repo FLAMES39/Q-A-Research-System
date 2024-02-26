@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { UserService } from "../../services/user.service";
-import * as UserActions from '../Actions/userCounter'
+import * as UserActions from '../Actions/userActions'
 import { catchError, map, mergeMap, of, tap } from "rxjs";
 import { Router } from "@angular/router";
 
@@ -26,7 +26,7 @@ export class userEffects{
                         }
                     ),
                     map(ms=> UserActions.userRegistrationSuccess({message:ms.message})),
-                    catchError(res=> of(UserActions.userRegistrationFailure({message:res.message})))
+                    catchError((res=> of(UserActions.userRegistrationFailure({message:res.message}))))
                 )
             })
         )

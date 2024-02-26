@@ -1,5 +1,5 @@
 import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
-import * as userActions  from '../Actions/userCounter'
+import * as userActions  from '../Actions/userActions'
 
 
 

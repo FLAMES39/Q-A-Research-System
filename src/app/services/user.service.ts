@@ -13,8 +13,9 @@ export class UserService {
   }
 
   registerStudent(newUser:Newusers):Observable<AddUserSuccess>{
-    return this.http.post<AddUserSuccess>('',newUser)
+    return this.http.post<AddUserSuccess>('http://localhost:4000/user',newUser)
   }
+  
   loginUser(loggedStudent:Loggedusers):Observable<AddUserSuccess>{
     return this.http.post<AddUserSuccess>('',loggedStudent)
   }
