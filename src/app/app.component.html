@@ -2,8 +2,8 @@
   <div class="navbar">
    
     <div class="navleft">
-      <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Q&A RESEARCH</a>
-      <a routerLink="/home" routerLinkActive="active">Home</a>
+      <a routerLink="/apply" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Q&A RESEARCH</a>
+      <a routerLink="/jobs" routerLinkActive="active">Home</a>
       <a routerLink="/courses" routerLinkActive="active" >Courses</a>
     </div>
     <div class="navRight">
@@ -17,8 +17,14 @@
   </div>
   
   <div class="main-image">
+    <div class="search-container">
+      <input type="text" placeholder="Search something..." class="search-input"/>
+      <button class="search-button">🔍</button> <!-- Placeholder text for the icon -->
+    </div>
     <img src="https://masomo.mut.ac.ke/pluginfile.php/1/theme_academi/slide1image/1708609573/maya-maceka-yW-Qgw_IJXg-unsplash.jpg" alt="Descriptive Text">
   </div>
+  
+  
 
   <router-outlet></router-outlet>
   

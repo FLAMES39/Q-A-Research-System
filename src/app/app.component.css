@@ -53,6 +53,41 @@ body, html {
 }
 
 
+.search-container {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: flex; /* This will align the button next to the input */
+    align-items: center; /* Align items vertically */
+  }
+  
+  .search-input {
+    padding: 10px;
+    width: 280px; /* Adjusted width to accommodate button */
+    border-radius: 20px 0 0 20px; /* Rounded corners on the left side */
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+    border-right: none; /* Remove right border */
+  }
+  
+  .search-button {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    background-color: blue; /* Match the input field */
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0 20px 20px 0; /* Rounded corners on the right side */
+    outline: none;
+  }
+  
+  .search-button:hover {
+    background-color: #f0f0f0; /* Light grey background on hover */
+  }
+  
+
 app-footer {
     margin-top: auto;
 }

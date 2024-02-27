@@ -31,3 +31,31 @@ export interface loggedUserSuccess{
     Name:string
     
 }
+export interface iCourses{
+    courseID:number
+    name:string
+    description:string
+    department:string
+    credithours:number
+    units:units[]
+}
+
+export interface units{
+    id:string
+    name:string
+    description:string
+    contentUrls?:string
+}
+
+
+export interface iDepartments{
+    id: string; 
+    name: string;
+    headId: string;
+    courses: iCourses[];
+    lecturerIds: string[];
+}
+
+export interface addedSuccessfull{
+    message:string
+}
