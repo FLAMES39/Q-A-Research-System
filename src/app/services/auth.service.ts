@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { loggedUserSuccess } from '../interfaces';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor( ) { 
+  constructor(  @Inject(PLATFORM_ID) private platformId: Object) { 
 
   }
   role!:string | null
@@ -32,5 +33,14 @@ export class AuthService {
     let Name = localStorage.getItem('Name')
     return this.Name = Name? Name:'Welcome Student'
   }
-
+  isLoggIn() {
+    if (isPlatformBrowser(this.platformId)) {
+      // Safe to use localStorage
+      let token = localStorage.getItem('token');
+      this.token = token ? token : null;
+      return !!this.token;
+    }
+    return false; // Default to not logged in if not in browser environment
+  }
+  
 }
