@@ -13,6 +13,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { jobEffects } from './states/Effects/JobEffects';
 
 @NgModule({
     declarations: [
@@ -26,13 +29,14 @@ import { ReactiveFormsModule } from '@angular/forms';
         AppRoutingModule,
         HttpClientModule,
         RouterModule,
+        ReactiveFormsModule,
+        MatDatepickerModule,
         MatFormFieldModule,
         MatInputModule,
-        MatDatepickerModule,
         MatNativeDateModule,
-        ReactiveFormsModule,
+        MatButtonModule,
         StoreModule.forRoot({user:userReducer}),
-        EffectsModule.forRoot([userEffects]),
+        EffectsModule.forRoot([userEffects,jobEffects]),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     
 

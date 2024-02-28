@@ -8,6 +8,7 @@ export const routes: Routes = [
     {path:'register',loadComponent:()=>import('../app/Components/registration/registration.component').then(r=>r.RegistrationComponent)},
     {path:'courses',loadComponent:()=>import('./Components/courses/courses.component').then(u=>u.CoursesComponent)},
     {path:'jobs',loadComponent:()=>import('./Components/jobs/jobs.component').then(j=>j.JobsComponent)},
-    {path:'apply',loadComponent:(()=>import('../app/Components/job-application/job-application.component').then(a=>a.JobApplicationComponent))}
+    {path:'apply',loadComponent:(()=>import('../app/Components/job-application/job-application.component').then(a=>a.JobApplicationComponent))},
+    {path:'single',loadComponent:( ()=>import('../app/Components/single-job/single-job.component').then(s=>s.SingleJobComponent))}
 
 ];

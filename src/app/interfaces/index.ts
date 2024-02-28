@@ -59,3 +59,72 @@ export interface iDepartments{
 export interface addedSuccessfull{
     message:string
 }
+
+export interface iApplication{
+    ApplicationID:number
+    JobID:number
+    UserID:number
+    ApplicationDate:Date
+    Status:"Applied" | "Not Applied"
+    CoverLetter:string
+}
+
+
+export interface jobCategory{
+    CategoryID:number
+    Name:string
+    Description:string
+}
+
+export interface ijobs{
+    CompanyID:number
+    CategoryID:number
+    Title:string
+    Description:string
+    Location:string
+    SalaryRange:string
+    Type:string
+    PostedDate:string
+    ExpiryDate:string
+}
+export interface jobs{
+    CompanyID:number
+    CategoryID:number
+    Title:string
+    Description:string
+    Location:string
+    SalaryRange:string
+    Type:string
+    PostedDate:string
+    ExpiryDate:string
+}
+
+export interface jobAddedSuccessful{
+    message:string
+}
+export interface jobAppliedSuccessful{
+    message:string
+}
+export interface jobDeletedSuccessful{
+    message:string
+}
+
+export interface jobWithdrwanSuccessful{
+    message:string
+}
+
+export interface newJobPost{
+    CompanyID:number
+    CategoryID:number
+    Title:string
+    Description:string
+    Location:string
+    SalaryRange:string
+    Type:string
+    PostedDate:string
+    ExpiryDate:string
+}
+
+export interface updatedJobPostSuccess{
+    message:string
+}
