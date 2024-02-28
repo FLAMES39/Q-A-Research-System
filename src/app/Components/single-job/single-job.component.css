@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.jobcard {
+    max-width: 800px;
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    background: #FFF;
+    transition: all 0.3s ease-in-out;
+}
+
+.jobbanner {
+    background: linear-gradient(135deg, #6e45e2 0%, #88d3ce 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.job-title, .job-location, .job-description h2, .role-responsibilities h3, .job-details h3, .about-us h3, .how-to-apply h3 {
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.job-info, .job-description, .role-responsibilities, .job-details, .about-us, .how-to-apply {
+    padding: 20px;
+}
+
+.job-description p, .role-responsibilities ul, .job-requirements ul, .job-benefits ul, .about-us p, .how-to-apply p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.proceed {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding: 20px;
+    background: #f8f8f8;
+}
+
+.apply-button, .learn-more-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.apply-button {
+    color: #fff;
+    background-color: #5f27cd;
+}
+
+.learn-more-button {
+    background-color: transparent;
+    color: #5f27cd;
+    border: 2px solid #5f27cd;
+}
+
+.apply-button:hover {
+    background-color: #341f97;
+}
+
+.learn-more-button:hover {
+    background-color: #5f27cd;
+    color: #fff;
+}
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close-modal {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .job-details {
+        flex-direction: column;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+}

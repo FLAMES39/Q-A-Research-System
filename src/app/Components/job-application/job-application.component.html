@@ -1,64 +1,30 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="job-post-form">
-    <mat-form-field appearance="fill">
-      <mat-label>Company ID</mat-label>
-      <input matInput formControlName="CompanyID" required>
-      <mat-error *ngIf="jobPostForm.get('CompanyID').hasError('required')">Company ID is required</mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Category ID</mat-label>
-      <input matInput formControlName="CategoryID" required>
-      <mat-error *ngIf="jobPostForm.get('CategoryID').hasError('required')">Category ID is required</mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Title</mat-label>
-      <input matInput formControlName="Title" required>
-      <mat-error *ngIf="jobPostForm.get('Title').hasError('required')">Title is required</mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Description</mat-label>
-      <textarea matInput formControlName="Description" required></textarea>
-      <mat-error *ngIf="jobPostForm.get('Description').hasError('required')">Description is required</mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Location</mat-label>
-      <input matInput formControlName="Location" required>
-      <mat-error *ngIf="jobPostForm.get('Location').hasError('required')">Location is required</mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Salary Range</mat-label>
-      <input matInput formControlName="SalaryRange" required>
-      <mat-error *ngIf="jobPostForm.get('SalaryRange').hasError('required')">Salary Range is required</mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Type</mat-label>
-      <mat-select formControlName="Type" required>
-        <mat-option value="Full-Time">Full-Time</mat-option>
-        <mat-option value="Part-Time">Part-Time</mat-option>
-        <!-- Add other types as needed -->
-      </mat-select>
-      <mat-error *ngIf="jobPostForm.get('Type').hasError('required')">Type is required</mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Posted Date</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="PostedDate">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Expiry Date</mat-label>
-      <input matInput [matDatepicker]="picker2" formControlName="ExpiryDate">
-      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-      <mat-datepicker #picker2></mat-datepicker>
-    </mat-form-field>
-  
-    <button mat-raised-button color="primary" type="submit">Submit</button>
+<div class="container">
+  <form [formGroup]="jobApplicationForm" (ngSubmit)="applyJob()">
+    <div class="form-group">
+      <label for="JobID">Job ID</label>
+      <input type="text" id="JobID" class="form-control" formControlName="JobID" />
+      <div *ngIf="jobApplicationForm.get('JobID')?.touched && jobApplicationForm.get('JobID')?.invalid" class="alert alert-danger">
+        Job ID is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="UserID">User ID</label>
+      <input type="text" id="UserID" class="form-control" formControlName="UserID" />
+      <div *ngIf="jobApplicationForm.get('UserID')?.touched && jobApplicationForm.get('UserID')?.invalid" class="alert alert-danger">
+        User ID is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="CoverLetter">Cover Letter</label>
+      <textarea id="CoverLetter" class="form-control" formControlName="CoverLetter" rows="5"></textarea>
+      <div *ngIf="jobApplicationForm.get('CoverLetter')?.touched && jobApplicationForm.get('CoverLetter')?.invalid" class="alert alert-danger">
+        <div *ngIf="jobApplicationForm.get('CoverLetter')?.errors?.['required']">Cover Letter is required.</div>
+        <div *ngIf="jobApplicationForm.get('CoverLetter')?.errors?.['minlength']">Cover Letter must be at least 100 characters.</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!jobApplicationForm.valid">Apply</button>
   </form>
-  
+</div>
