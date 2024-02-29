@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6610f2;
+  --text-color: #ffffff;
+  --background-color: #f0f2f5;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 20px;
+}
+
+.user-profile {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  grid-template-areas: 
+    "header header header header header header header header header header header header"
+    "contact contact contact skills skills skills bio bio bio bio bio bio"
+    "resume resume resume resume resume resume resume resume resume resume resume resume";
+}
+
+.profile-header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--text-color);
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-picture-wrapper {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid var(--text-color);
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+}
+
+.profile-picture {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.user-info {
+  margin-left: 180px;
+}
+
+.user-name, .user-title, h2 {
+  color: var(--text-color);
+}
+
+.skills, .bio, .contact-info, .resume {
+  background-color: #e9ecef;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.skills {
+  grid-area: skills;
+}
+
+.bio {
+  grid-area: bio;
+}
+
+.contact-info {
+  grid-area: contact;
+}
+
+.resume {
+  grid-area: resume;
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skills-list li {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 10px;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.skills-list li:hover {
+  transform: translateY(-5px);
+}
+
+
