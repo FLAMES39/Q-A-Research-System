@@ -19,19 +19,20 @@
             </ul>
         </div>
     </div>
-    <div class="job-listing">
-        <div class="job">
-            <h3>Frontend Developer</h3>
-            <p>New York</p>
-            <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button class="btn"><a href="/apply">More Details</a></button>
+    <div class="job-listing" *ngIf="  jobs | async as job ; else nojobs" >
+        <div class="job"  *ngFor="let ijob of job let i=index">
+            <h3>{{ijob.Title}}</h3>
+            <p>{{ijob.Location}}</p>
+            <p>{{ijob.Description}}</p>
+            <button class="btn"><a href="/single">More Details</a></button>
         </div>
-        <div class="job">
-            <h3>Backend Developer</h3>
-            <p>Remote</p>
-            <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button class="btn"><a href="/apply">More Details</a></button>
-        </div>
-        <!-- More jobs can be added here -->
+       
     </div>
+    <ng-template #nojobs>
+        No jobs Avaiable
+    </ng-template>
 </div>
+
+
+
+

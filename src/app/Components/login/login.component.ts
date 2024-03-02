@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Router, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../states/appState';
+import { userLogin } from '../../states/Actions/userActions';
 
 @Component({
   selector: 'app-login',
@@ -29,5 +30,8 @@ export class LoginComponent implements OnInit{
   }
   onSubmit(){
 
+  }
+  onLogin(){
+    this.store.dispatch(userLogin({loggedUser:this.form.value}))
   }
 }

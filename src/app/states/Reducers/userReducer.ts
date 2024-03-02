@@ -31,8 +31,9 @@ export const userReducer = createReducer(
     on(userActions.userRegistrationSuccess,(state,action):userinterface=>{
         return{
             ...state,
-            userRegistrationFailure:'',
-            userRegistrationSuccess:action.message
+            userRegistrationSuccess:action.message,
+            userRegistrationFailure:''
+            
         }
     }),
     on(userActions.userRegistrationFailure,(state,action):userinterface=>{

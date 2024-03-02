@@ -6,7 +6,6 @@ import { AppState } from '../../states/appState';
 import { Store } from '@ngrx/store';
 import { userRegiistration } from '../../states/Actions/userActions';
 import { StoreModule } from '@ngrx/store';
-
 @Component({
   selector: 'app-registration',
   standalone: true,
@@ -15,7 +14,7 @@ import { StoreModule } from '@ngrx/store';
   styleUrl: './registration.component.css'
 })
 export class RegistrationComponent implements OnInit{
-  constructor( private Route:Router, private fb:FormBuilder , private store:Store<AppState>){
+  constructor( private Route:Router, private fb:FormBuilder , private store:Store<AppState> ){
 
   }
   form!:FormGroup
@@ -34,7 +33,6 @@ export class RegistrationComponent implements OnInit{
   }
   submit(){
     this.store.dispatch(userRegiistration({newUser:this.form.value}))
-    console.log(this.form.value);
     
   }
 }

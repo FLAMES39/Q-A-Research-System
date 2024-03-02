@@ -6,7 +6,7 @@ import { Loggedusers, Newusers } from "../../interfaces";
 
 
 
-export const userRegiistration = createAction('[userGregister]-registration',props<{newUser:Newusers}>())
+export const userRegiistration = createAction('[useregister]-registration',props<{newUser:Newusers}>())
 export const userRegistrationSuccess = createAction('[userRegister]-registrationSuccess',props<{message:string}>())
 export const userRegistrationFailure= createAction('[userRegister]-registrationFailuer',props<{message:string}>())
 

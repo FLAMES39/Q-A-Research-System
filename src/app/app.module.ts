@@ -16,6 +16,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { jobEffects } from './states/Effects/JobEffects';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { jobReducers } from './states/Reducers/JobReducers';
 
 @NgModule({
     declarations: [
@@ -33,9 +36,12 @@ import { jobEffects } from './states/Effects/JobEffects';
         MatDatepickerModule,
         MatFormFieldModule,
         MatInputModule,
+        MatSidenavModule,
         MatNativeDateModule,
+        // BrowserAnimationsModule,
+        NoopAnimationsModule,
         MatButtonModule,
-        StoreModule.forRoot({user:userReducer}),
+        StoreModule.forRoot({user:userReducer, jobs:jobReducers}),
         EffectsModule.forRoot([userEffects,jobEffects]),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     

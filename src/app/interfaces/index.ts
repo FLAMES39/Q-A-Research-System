@@ -1,4 +1,4 @@
-import exp from "constants"
+
 
 export interface iusers {
     UserID: string,
@@ -11,9 +11,9 @@ export interface iusers {
 
 export interface Newusers {
     Name: string,
-    Password: string,
     Email: string,
-
+    Password: string,
+   
 }
 export interface AddUserSuccess{
     message:string

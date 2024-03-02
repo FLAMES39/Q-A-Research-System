@@ -22,7 +22,7 @@ export class userEffects{
                 return this.userService.registerStudent(action.newUser).pipe(
                     tap(
                         ms=>{
-                            this.router.navigate(['/courses'])
+                            this.router.navigate(['/jobs'])
                         }
                     ),
                     map(ms=> UserActions.userRegistrationSuccess({message:ms.message})),
@@ -38,7 +38,7 @@ export class userEffects{
                 return this.userService.loginUser(action.loggedUser).pipe(
                     tap(
                         ms=>{
-                            this.router.navigate(['/courses'])
+                            this.router.navigate(['/jobs'])
                         }
                     ),
                     map(msg=> UserActions.userLoginSuccess({message:msg.message})),

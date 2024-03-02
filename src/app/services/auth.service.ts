@@ -33,14 +33,13 @@ export class AuthService {
     let Name = localStorage.getItem('Name')
     return this.Name = Name? Name:'Welcome Student'
   }
-  isLoggIn() {
-    if (isPlatformBrowser(this.platformId)) {
-      // Safe to use localStorage
-      let token = localStorage.getItem('token');
-      this.token = token ? token : null;
-      return !!this.token;
-    }
-    return false; // Default to not logged in if not in browser environment
+  isLoggeIn(){
+    let role= localStorage.getItem('role')
+    this.role= role? role:null
+    let token= localStorage.getItem('token')
+    this.token=token?token:null
+    return this.token? true: false 
+
   }
   
 }

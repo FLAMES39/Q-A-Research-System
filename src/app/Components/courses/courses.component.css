@@ -1,16 +1,51 @@
-.sidebar{
-    width: 30%;
-    background-color: gray;
-    border: 2px;
-    border-color: solid black;
-}
-.departments{
-    width: 70%;
-    background-color: rgb(230, 217, 173);
-    border: 2px;
-    border-color: solid blue;
-}
-body{
+.app-container {
     display: flex;
-    justify-content: space-between;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.sidenav-container {
+    flex: 1;
+}
+
+.sidenav {
+    width: 250px;
+    box-shadow: 3px 0 6px rgba(0,0,0,.24);
+}
+
+.content-area {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.placeholder-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidenav {
+        width: 100%;
+        position: absolute;
+    }
+
+    .sidenav.opened {
+        width: 250px;
+    }
+}
+
+mat-nav-list a {
+    transition: background-color .3s ease;
+}
+
+mat-nav-list a:hover {
+    background-color: #f0f0f0;
+}
+
+mat-icon {
+    margin-right: 10px;
 }

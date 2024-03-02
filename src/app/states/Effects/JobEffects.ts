@@ -23,8 +23,8 @@ export class jobEffects {
             ofType(JobsAction.Getjobs),
             mergeMap( action =>{
                 return this.jobservice.getJobs().pipe(
-                    map( Jobs => {
-                        return JobsAction.GetjobsSuccess({ Jobs})
+                    map( job => {
+                        return JobsAction.GetjobsSuccess({ job})
                     }),
                     catchError(error => of(JobsAction.GetjobsFailure({message:error})))
                 )

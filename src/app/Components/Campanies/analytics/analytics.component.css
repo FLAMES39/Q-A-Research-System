@@ -1,0 +1,51 @@
+.analytics-dashboard {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    padding: 20px;
+    background: #F0F2F5;
+}
+
+.dashboard-header h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.dashboard-widgets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.widget {
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.insight-card, .predictive-insights {
+    text-align: center;
+}
+
+.big-number {
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+.trend {
+    font-weight: bold;
+    color: #4CAF50; 
+}
+
+.interactive-tool select, .interactive-tool input[type="range"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.data-story .story-visualization {
+    height: 200px;
+    background-color: #eaecef; 
+}

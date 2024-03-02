@@ -1,9 +1,9 @@
 import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
-import  * as JobAction from  '../Actions/JobActions' 
-import { ijobs } from "../../interfaces";
+import  * as JobAction from  '../../states/Actions/JobActions' 
+import { ijobs, jobs } from "../../interfaces";
 
 export interface jobsInterface{
-    Jobs:ijobs[]
+    job:jobs[]
     JobError:string
     GetjobsFailure:string
     GetJobID:number
@@ -23,8 +23,8 @@ export interface jobsInterface{
     updatedJobPostFailure:string
     
 }
-const initiatlstate:jobsInterface ={
-    Jobs: [],
+const initialState:jobsInterface ={
+    job: [],
     GetjobsFailure: "",
     GetJobByIdSuccess: null,
     GetJobByIdFailure: "",
@@ -45,19 +45,20 @@ const initiatlstate:jobsInterface ={
 }
     
 
-const getJobState = createFeatureSelector<jobsInterface>('job')
-export const getjobs = createSelector(getJobState,(state)=>state.Jobs)
+const getJobState = createFeatureSelector<jobsInterface>('jobs')
+export const getAllJobs =createSelector(getJobState,(state) =>state.job)
 export const getJobByID = createSelector(getJobState,(state)=>state.GetJobID)
 
 
 
 export const jobReducers = createReducer( 
-    initiatlstate,
+    initialState,
     on(JobAction.GetjobsSuccess ,(state, action):jobsInterface=>{
         return {
             ...state,
-            JobError:'',
-            Jobs:action.Jobs,
+            job:action.job,
+            JobError:''
+           
 
         }
     }),
@@ -65,7 +66,7 @@ export const jobReducers = createReducer(
         return {
             ...state,
             JobError:action.message,
-            Jobs:[] 
+            job:[] 
 
         }
     }),
@@ -135,7 +136,7 @@ export const jobReducers = createReducer(
     on(JobAction.GetJobByLocationFailure ,(state, action):jobsInterface=>{
         return {
             ...state,
-            GetJobByLocationFailure: '',
+            GetJobByLocationFailure: action.message,
             GetJobByLocationSuccess: null
 
         }

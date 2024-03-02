@@ -11,14 +11,14 @@ export class JobsService {
   constructor( private http:HttpClient) { }
 
   getJobs():Observable<jobs[]>{
-    return this.http.get<jobs[]>('')
+    return this.http.get<jobs[]>('http://localhost:4000/jobs')
   }
 
   addJobs(newJob:ijobs):Observable<jobAddedSuccessful>{
     return this.http.post<jobAddedSuccessful>('',newJob)
   }
   getJobsById(JobID:number):Observable<ijobs>{
-    return this.http.get<ijobs>(``)
+    return this.http.get<ijobs>(`http://localhost:4000/jobs/${JobID}`)
   }
   applyJob(applyJob:jobs):Observable<jobAppliedSuccessful>{
     return this.http.post<jobAppliedSuccessful>('',applyJob)

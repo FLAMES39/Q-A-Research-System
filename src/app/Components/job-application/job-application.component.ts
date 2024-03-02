@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../states/appState';
+import * as jobAction from '../../states/Actions/JobActions'
 
 @Component({
   selector: 'app-job-application',
@@ -10,7 +13,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './job-application.component.css'
 })
 export class JobApplicationComponent implements OnInit{
-  constructor(private fb:FormBuilder){
+  constructor(private fb:FormBuilder, private store:Store<AppState>){
 
   }
   jobApplicationForm!:FormGroup
@@ -23,6 +26,9 @@ export class JobApplicationComponent implements OnInit{
   }
   applyJob(){
 
+  }
+  submitForm(){
+    this.store.dispatch(jobAction.applyJob(this.jobApplicationForm.value))
   }
 
 }

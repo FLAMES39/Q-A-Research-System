@@ -1,14 +1,26 @@
 <body>
-    <div class="sidebar">
-        <div class="schools">
-           <div>
-            <p>school code</p>
-            <li>School</li>
-           </div>
-        </div>
-    </div>
-    <div class="departsmets">
-        <router-outlet></router-outlet>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam deserunt voluptate ea quasi quis culpa, nulla ad modi, maiores quos voluptatem, officiis sunt ab aperiam reprehenderit quo recusandae mollitia sint.</p>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <mat-sidenav-container class="sidenav-container">
+            <mat-sidenav #sidenav mode="side" opened="true" class="sidenav">
+                <h2>Companies</h2>
+                <mat-nav-list>
+                    <a mat-list-item *ngFor="let company of companies" (click)="selectCompany(company)">
+                     
+                        <mat-icon aria-hidden="false" aria-label="Company logo">business</mat-icon>
+                       Flames Comples
+                    </a>
+                </mat-nav-list>
+            </mat-sidenav>
+
+         
+            <mat-sidenav-content class="content-area">
+                <router-outlet></router-outlet>
+                
+                <div *ngIf="!selectedCompany" class="placeholder-content">
+                    <p>Select a company to view details.</p>
+                </div>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
     </div>
 </body>

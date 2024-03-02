@@ -1,0 +1,22 @@
+<div class="dashboard">
+    <nav class="navbar">
+        <div class="logo">Job<span>Board</span></div>
+        <div class="user-info">
+            <span>Admin</span>
+            <div class="avatar"></div>
+        </div>
+    </nav>
+    <aside class="sidebar">
+        <a href="/dashboard/posting" class="sidebar-link active"><i class="fas fa-briefcase"></i>Job Postings</a>
+        <a href="/dashboard/tracking" class="sidebar-link"><i class="fas fa-users"></i>Applicant Tracking</a>
+        <a href="/dashboard/analytics" class="sidebar-link"><i class="fas fa-chart-line"></i>Analytics</a>
+        <a href="/dashboard/branding" class="sidebar-link"><i class="fas fa-bullhorn"></i>Company Branding</a>
+        <a href="#communication-tools" class="sidebar-link"><i class="fas fa-comments"></i>Communication</a>
+    </aside>
+    <main class="main-content">
+<div>
+            <router-outlet></router-outlet>
+            
+        </div>
+    </main>
+</div>

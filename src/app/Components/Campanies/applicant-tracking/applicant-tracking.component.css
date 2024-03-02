@@ -1,0 +1,80 @@
+.applicant-tracking-container {
+    padding: 20px;
+    background-color: #f4f7f6;
+}
+
+.applicant-tracking-container h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section label {
+    margin-right: 10px;
+}
+
+.filter-section select {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.applicants-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.applicants-table th, .applicants-table td {
+    text-align: left;
+    border: 1px solid #ccc;
+}
+/* f8f8f8; padding: 8px;
+  border-bottom: 1px solid #ddd;
+} */
+
+.applicants-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.applicants-table td {
+  background-color: #f2f2f2;
+}
+.btn-view, .btn-contact {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+ 
+}
+    /* top: -9999px;
+  left: -9999px;
+  font-size: 14px;
+} */
+.applicants-table tr {
+
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.applicants-table td {
+  font-size: 14px;
+  padding: 10px;
+  text-align: left; /* Add back the alignment here */
+}
+/* border:{
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    } */
+    
+    .applicants-table td:before {
+        content: attr(data-label);
+        position: absolute;
+left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
