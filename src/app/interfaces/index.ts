@@ -1,12 +1,13 @@
 
 
 export interface iusers {
-    UserID: string,
+    UserID: number,
     Name: string,
     Password: string,
     Email: string,
     Role: string,
     IsDeleted:number
+    bio:string
 }
 
 export interface Newusers {
@@ -15,9 +16,11 @@ export interface Newusers {
     Password: string,
    
 }
+
 export interface AddUserSuccess{
     message:string
 }
+
 export interface Loggedusers {
     Password: string,
     Email: string,
@@ -76,17 +79,17 @@ export interface jobCategory{
     Description:string
 }
 
-export interface ijobs{
-    CompanyID:number
-    CategoryID:number
-    Title:string
-    Description:string
-    Location:string
-    SalaryRange:string
-    Type:string
-    PostedDate:string
-    ExpiryDate:string
-}
+// export interface ijobs{
+//     CompanyID:number
+//     CategoryID:number
+//     Title:string
+//     Description:string
+//     Location:string
+//     SalaryRange:string
+//     Type:string
+//     PostedDate:string
+//     ExpiryDate:string
+// }
 export interface jobs{
     CompanyID:number
     CategoryID:number

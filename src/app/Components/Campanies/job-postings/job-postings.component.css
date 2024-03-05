@@ -57,8 +57,10 @@
     background-color: #45a049;
 }
 
+
 @media (max-width: 768px) {
     .job-posting-form-container {
         padding: 10px;
     }
 }
+

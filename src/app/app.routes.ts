@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-    
+    // {path:'job',loadChildren:()=>import('./Components/jobs/job/job.module').then(j=>j.JobModule)},
+    {path:'jobs', loadComponent: () => import('../app/Components/jobs/jobs.component').then(m=>m.JobsComponent)},
     {path:'profile', loadComponent:()=>import('../app/Components/profile/profile.component').then(p=>p.ProfileComponent)},
     {path:'footer',loadComponent:()=>import('../app/Components/footer/footer.component').then(f=>f.FooterComponent) },
     {path:'login', loadComponent:()=>import('../app/Components/login/login.component').then(l=>l.LoginComponent)},
     {path:'register',loadComponent:()=>import('../app/Components/registration/registration.component').then(r=>r.RegistrationComponent)},
     {path:'company',loadComponent:()=>import('./Components/company/company.component').then(u=>u.CompanyComponent)},
-    {path:'jobs',loadComponent:()=>import('./Components/jobs/jobs.component').then(j=>j.JobsComponent)},
     {path:'apply',loadComponent:(()=>import('../app/Components/job-application/job-application.component').then(a=>a.JobApplicationComponent))},
     {path:'single',loadComponent:( ()=>import('../app/Components/single-job/single-job.component').then(s=>s.SingleJobComponent))},
     {path:'dashboard' , loadComponent:( ()=>import('../app/Components/Campanies/dashboard/dashboard.component').then(d=>d.DashboardComponent)),

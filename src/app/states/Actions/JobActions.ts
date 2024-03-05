@@ -1,12 +1,12 @@
 import { createAction, props } from "@ngrx/store"
-import { ijobs,  jobs,  newJobPost } from "../../interfaces"
+import {   jobs,  newJobPost } from "../../interfaces"
 
 
 
 
 
-export const Getjobs = createAction('[jobs]-jobs')
-export const GetjobsSuccess = createAction('[GetjobsFailure]-GetjobsSuccess',props<{job:jobs[]}>())
+export const Getjobs = createAction('[jobs]-Getjobs')
+export const GetjobsSuccess = createAction('[GetjobsSuccess]-GetjobsSuccess',props<{job:jobs[]}>())
 export const GetjobsFailure = createAction('[GetjobsFailure]-GetjobsFailure',props<{message:string}>())
 
 
@@ -25,7 +25,7 @@ export const addJob=createAction('[addJob]-addJob',props<{newJob:jobs}>())
 export const AddJobSuccess=createAction('[addJobsSuccess]-addJobSuccess',props<{message:string}>())
 export const AddJobFailure=createAction('[AddCoursesFailure]-addJobFailure',props<{message:string}>())
 
-export const applyJob=createAction('[applyJob]-applyJob',props<{applyJob:ijobs}>())
+export const applyJob=createAction('[applyJob]-applyJob',props<{applyJob:jobs}>())
 export const applyJobSuccess=createAction('[applyJobSuccess]-applyJobSuccess',props<{message:string}>())
 export const applyJobFailure=createAction('[applyJobFailure]-applyJobFailure',props<{message:string}>())
 

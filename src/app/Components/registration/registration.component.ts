@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 import { AppState } from '../../states/appState';
 import { Store } from '@ngrx/store';
-import { userRegiistration } from '../../states/Actions/userActions';
+import { userRegistration } from '../../states/Actions/userActions';
 import { StoreModule } from '@ngrx/store';
 @Component({
   selector: 'app-registration',
@@ -32,7 +32,7 @@ export class RegistrationComponent implements OnInit{
     
   }
   submit(){
-    this.store.dispatch(userRegiistration({newUser:this.form.value}))
+    this.store.dispatch(userRegistration({newUser:this.form.value}))
     
   }
 }

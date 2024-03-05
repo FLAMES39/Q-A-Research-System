@@ -19,20 +19,23 @@
             </ul>
         </div>
     </div>
-    <div class="job-listing" *ngIf="  jobs | async as job ; else nojobs" >
-        <div class="job"  *ngFor="let ijob of job let i=index">
-            <h3>{{ijob.Title}}</h3>
-            <p>{{ijob.Location}}</p>
-            <p>{{ijob.Description}}</p>
-            <button class="btn"><a href="/single">More Details</a></button>
+    <div class="job-listing" *ngIf="  jobs | async as job " >
+        <div  *ngFor ="let jb of job" class="job" >
+            <h3>{{jb.Title}}</h3>
+            <p>{{jb.Location}}</p>
+            <p>{{jb.Description}} </p>
+            <div>
+                <!-- <button class="btn" (click)="viewMore(jb.companyID)"><a href="/single">More Details</a></button> -->
+            </div>
         </div>
-       
-    </div>
-    <ng-template #nojobs>
-        No jobs Avaiable
-    </ng-template>
-</div>
 
+    </div>
+    <ng-template #noJobs>
+        No Jobs  Available!!!
+    </ng-template>
+    
+
+</div>
 
 
 

@@ -44,8 +44,6 @@ import { jobReducers } from './states/Reducers/JobReducers';
         StoreModule.forRoot({user:userReducer, jobs:jobReducers}),
         EffectsModule.forRoot([userEffects,jobEffects]),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    
-
     ]
 })
 export class AppModule { }

@@ -1,17 +1,17 @@
 <article class="user-profile">
-    <section class="profile-header">
+    <section class="profile-header" >
       <div class="profile-picture-wrapper">
-        <img src="path/to/profile-picture.jpg" alt="John Doe" class="profile-picture">
+        <img src="https://secure.gravatar.com/avatar/b9a6a966ae54d4c1c74655210aa820f4?s=35&d=mm"  class="profile-picture">
       </div>
-      <div class="user-info">
-        <h1 class="user-name">John Doe</h1>
+      <div class="user-info" *ngIf="user | async as users">
+        <h1 class="user-name">{{users.Name}}</h1>
         <p class="user-title">Frontend Developer</p>
       </div>
     </section>
     
-    <section class="contact-info">
+    <section class="contact-info" *ngIf="user | async as users">
       <h2>Contact Information</h2>
-      <p><strong>Email:</strong> john.doeexample.com</p>
+      <p><strong>Email:</strong> {{users.Email}}</p>
       <p><strong>Phone:</strong> +123456789</p>
       <p><strong>Location:</strong> New York, NY</p>
     </section>
@@ -26,13 +26,13 @@
       </ul>
     </section>
     
-    <section class="bio">
+    <section class="bio" *ngIf="user | async as users">
       <h2>About Me</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>{{users.bio}}</p>
     </section>
     
-    <section class="resume">
-      <h2>Resume</h2>
+    <section class="resume"  *ngIf="user | async as users">
+      <h2>{{users.bio}}</h2>
       <a href="path/to/resume.pdf" target="_blank" class="resume-link">Download My Resume</a>
     </section>
   </article>

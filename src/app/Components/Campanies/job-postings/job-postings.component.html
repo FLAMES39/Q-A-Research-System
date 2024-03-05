@@ -1,32 +1,32 @@
 <div class="job-posting-form-container">
-    <form (ngSubmit)="onsubmit()" class="job-posting-form">
+    <form (ngSubmit)="onsubmit()" class="job-posting-form" [formGroup]="postForm">
         <h2>Create Job Posting</h2>
 
         <label for="title">Job Title</label>
-        <input type="text" id="title" name="title" required>
+        <input type="text" id="title" name="Title" formControlName="Title" required>
 
         <label for="description">Description</label>
-        <textarea id="description" name="description" required></textarea>
+        <textarea id="description" name="Description" formControlName="Description" required></textarea>
 
         <label for="location">Location</label>
-        <input type="text" id="location" name="location" required>
+        <input type="text" id="location" name=" Location" formControlName="Location" required>
 
         <label for="salaryRange">Salary Range</label>
-        <input type="text" id="salaryRange" name="salaryRange" required>
+        <input type="text" id="salaryRange" name="salaryRange" formControlName="salaryRange" required>
 
         <label for="type">Type</label>
-        <select id="type" name="type" required>
-            <option value="Full-Time">Full-Time</option>
+        <select id="type" name="type" formControlName="type" required>
+            <option value="default">Full-Time</option>
             <option value="Part-Time">Part-Time</option>
             <option value="Contract">Contract</option>
             <option value="Temporary">Temporary</option>
         </select>
 
         <label for="postedDate">Posted Date</label>
-        <input type="date" id="postedDate" name="postedDate" required>
+        <input type="date" id="postedDate" name="postedDate" formControlName="postedDate" required>
 
         <label for="expiryDate">Expiry Date</label>
-        <input type="date" id="expiryDate" name="expiryDate" required>
+        <input type="date" id="expiryDate" name="expiryDate" formControlName="expiryDate" required>
 
         <button type="submit" class="submit-btn" (click)="postJob()">Post Job</button>
     </form>

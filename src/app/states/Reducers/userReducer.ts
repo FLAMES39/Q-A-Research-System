@@ -1,21 +1,35 @@
 import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
 import * as userActions  from '../Actions/userActions'
+import { iusers } from "../../interfaces";
 
 
 
 
 export interface userinterface{
+    user:iusers[],
+    getUsersError:string
     userRegistrationSuccess:string
     userRegistrationFailure:string
     userLoginSuccess:string
     userLoginFailure:string
+    getUserByIDSuccess: iusers | null 
+    getUserByIDFailure: string
+    UserID: number
+   
+    
 }
 
 const initialiState:userinterface={
+    user: [],
+    getUsersError: "",
     userRegistrationSuccess: "",
     userRegistrationFailure: "",
     userLoginSuccess: "",
-    userLoginFailure: ""
+    userLoginFailure: "",
+    getUserByIDSuccess: null,
+    getUserByIDFailure: "",
+    UserID: 0,
+   
 }
 
 const userRegisterState= createFeatureSelector<userinterface>('user')
@@ -25,6 +39,11 @@ export const  userRegisterFailure= createSelector(userRegisterState,(state)=>sta
 const userLoggedinState=createFeatureSelector<userinterface>('user')
 export const userLoggedinSuccess=createSelector(userLoggedinState, (state)=>state.userLoginSuccess)
 export const userLoggedinFailure=createSelector(userLoggedinState, (state)=>state.userLoginFailure)
+
+const getUserState = createFeatureSelector<userinterface>('user')
+export const getUsers = createSelector(getUserState,(state)=>state.user)
+export const  getUserID = createSelector(getUserState,(state)=>state.UserID)
+export const  getUserByID = createSelector(getUsers,getUserID,(user,UserID)=>user.find(usr=>usr.UserID === UserID) as iusers)
 
 export const userReducer = createReducer(
     initialiState,
@@ -56,5 +75,44 @@ export const userReducer = createReducer(
             userLoginSuccess:'',
             userLoginFailure:action.message
         }
-    })
+    }),
+    on(userActions.getUserID,(state, action):userinterface=>{
+        return{
+            ...state,
+            UserID:action.UserID,
+            
+        }
+    }),
+    on(userActions.getUserByIDSuccess,(state, action):userinterface=>{
+        return{
+            ...state,
+            getUserByIDSuccess:action.user,
+            getUserByIDFailure:''
+
+        }
+    }),
+    on(userActions.getUserByIDFailure,(state, action):userinterface=>{
+        return{
+            ...state,
+            getUserByIDFailure:action.message,
+            getUserByIDSuccess: null
+
+        }
+    }),
+    on(userActions.getUsersSuccess,(state, action):userinterface=>{
+        return{
+            ...state,
+            user:action.user,
+            getUsersError:''
+
+        }
+    }),
+    on(userActions.getUsersFailure,(state, action):userinterface=>{
+        return{
+            ...state,
+            getUsersError:action.message,
+            user: []
+
+        }
+    }),
 )

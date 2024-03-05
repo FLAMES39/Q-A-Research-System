@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ijobs, jobAddedSuccessful, jobAppliedSuccessful, jobDeletedSuccessful, jobWithdrwanSuccessful, jobs, newJobPost,  updatedJobPostSuccess } from '../interfaces';
+import { jobAddedSuccessful, jobAppliedSuccessful, jobDeletedSuccessful, jobWithdrwanSuccessful, jobs, newJobPost,  updatedJobPostSuccess } from '../interfaces';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,17 +14,17 @@ export class JobsService {
     return this.http.get<jobs[]>('http://localhost:4000/jobs')
   }
 
-  addJobs(newJob:ijobs):Observable<jobAddedSuccessful>{
-    return this.http.post<jobAddedSuccessful>('',newJob)
+  addJobs(newJob:jobs):Observable<jobAddedSuccessful>{
+    return this.http.post<jobAddedSuccessful>('http://localhost:4000/jobs',newJob)
   }
-  getJobsById(JobID:number):Observable<ijobs>{
-    return this.http.get<ijobs>(`http://localhost:4000/jobs/${JobID}`)
+  getJobsById(JobID:number):Observable<jobs>{
+    return this.http.get<jobs>(`http://localhost:4000/jobs/${JobID}`)
   }
   applyJob(applyJob:jobs):Observable<jobAppliedSuccessful>{
     return this.http.post<jobAppliedSuccessful>('',applyJob)
   }
-  getJobsByLocation(location:string):Observable<ijobs>{
-    return this.http.get<ijobs>(``)
+  getJobsByLocation(location:string):Observable<jobs>{
+    return this.http.get<jobs>(``)
   }
 
  withdrawApplication(ApplicationID:number):Observable<jobWithdrwanSuccessful>{

@@ -3,7 +3,7 @@ import { AppState } from '../../states/appState';
 import { Store } from '@ngrx/store';
 import { Router, RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ijobs, jobs } from '../../interfaces';
+import {  jobs } from '../../interfaces';
 import { getAllJobs } from '../../states/Reducers/JobReducers';
 import * as jobsAction from '../../states/Actions/JobActions'
 import { CommonModule } from '@angular/common';
@@ -24,9 +24,13 @@ export class JobsComponent implements OnInit{
   }
   ngOnInit(): void {
      this.jobs=this.store.select(getAllJobs)
-    this.store.dispatch(jobsAction.Getjobs())
+     console.log(    this.store.dispatch(jobsAction.Getjobs())
+     );
+     
   }
 
+  viewMore(companyID:number){
+    this.router.navigate(['/single',companyID])
+  }
 
-  
 }
