@@ -28,7 +28,7 @@ export class JobApplicationComponent implements OnInit{
 
   }
   submitForm(){
-    this.store.dispatch(jobAction.applyJob(this.jobApplicationForm.value))
+    this.store.dispatch(jobAction.applyJob({applyJob:this.jobApplicationForm.value}))
   }
 
 }

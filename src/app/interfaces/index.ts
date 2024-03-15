@@ -29,6 +29,7 @@ export interface Loggedusers {
 }
 
 export interface loggedUserSuccess{
+    UserID:number
     role:string
     token:string
     Name:string
@@ -91,6 +92,7 @@ export interface jobCategory{
 //     ExpiryDate:string
 // }
 export interface jobs{
+    JobID:number
     CompanyID:number
     CategoryID:number
     Title:string
@@ -117,8 +119,7 @@ export interface jobWithdrwanSuccessful{
 }
 
 export interface newJobPost{
-    CompanyID:number
-    CategoryID:number
+
     Title:string
     Description:string
     Location:string
@@ -131,3 +132,5 @@ export interface newJobPost{
 export interface updatedJobPostSuccess{
     message:string
 }
+
+

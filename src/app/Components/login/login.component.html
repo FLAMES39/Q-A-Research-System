@@ -5,22 +5,22 @@
         <label for="email" class="label">Email:</label>
         <div class="input-group">
           <span class="input-text"><i class="fas fa-user"></i></span>
-          <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter your email">
+          <input type="email" class="form-control" id="Email" formControlName="Email" placeholder="Enter your email">
         </div>
-            <div class="error"*ngIf="!form.get('email')?.valid && form.get('email')?.touched">
-                    <p *ngIf="form.get('email')!.errors!['required']">email is required</p>
-                    <p *ngIf="form.get('email')!.errors!['emailUnallowed']">email is not allowed</p>
+            <div class="error"*ngIf="!form.get('Email')?.valid && form.get('Email')?.touched">
+                    <p *ngIf="form.get('Email')!.errors!['required']">email is required</p>
+                    <p *ngIf="form.get('Email')!.errors!['emailUnallowed']">email is not allowed</p>
             </div>
       </div>
       <div class="mb-3">
-        <label for="password" class="label">Password:</label>
+        <label for="Password" class="label">Password:</label>
         <div class="input-group">
           <span class="input-text"><i class="fas fa-lock"></i></span>
-          <input  class="inputs"type="password" class="form-control" id="password" formControlName="password" placeholder="Enter your password">
+          <input  class="inputs"type="Password" class="form-control" id="Password" formControlName="Password" placeholder="Enter your password">
         </div>
-        <div class="error"*ngIf="!form.get('password')?.valid && form.get('password')?.touched">
-            <p *ngIf="form.get('password')!.errors!['required']">password is required</p>
-            <p *ngIf="form.get('password')!.errors!['emailUnallowed']">email is not allowed</p>
+        <div class="error"*ngIf="!form.get('Password')?.valid && form.get('Password')?.touched">
+            <p *ngIf="form.get('Password')!.errors!['required']">password is required</p>
+            <p *ngIf="form.get('Password')!.errors!['emailUnallowed']">email is not allowed</p>
     </div>
       </div>
       

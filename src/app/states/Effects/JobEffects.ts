@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { JobsService } from "../../services/jobs.service";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import * as JobsAction from "../Actions/JobActions"
-import { catchError, map, mergeMap, of } from "rxjs";
+import { catchError, map, mergeMap, of, switchMap } from "rxjs";
 import { error } from "console";
 
 
@@ -26,7 +26,7 @@ export class jobEffects {
                     map( job => {
                         return JobsAction.GetjobsSuccess({ job})
                     }),
-                    catchError(error => of(JobsAction.GetjobsFailure({message:error})))
+                    catchError(error => of(JobsAction.GetjobsFailure({jobError:error})))
                 )
             })
         )
@@ -66,7 +66,7 @@ export class jobEffects {
                 )
             })
         )
-    })
+        })
     getJobByLocation$ = createEffect( ()=>{
         return this.action$.pipe(
             ofType(JobsAction.GetJobByLocation),

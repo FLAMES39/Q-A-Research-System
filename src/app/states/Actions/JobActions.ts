@@ -5,9 +5,9 @@ import {   jobs,  newJobPost } from "../../interfaces"
 
 
 
-export const Getjobs = createAction('[jobs]-Getjobs')
+export const Getjobs = createAction('[jobs]-jobs')
 export const GetjobsSuccess = createAction('[GetjobsSuccess]-GetjobsSuccess',props<{job:jobs[]}>())
-export const GetjobsFailure = createAction('[GetjobsFailure]-GetjobsFailure',props<{message:string}>())
+export const GetjobsFailure = createAction('[GetjobsFailure]-GetjobsFailure',props<{jobError:string}>())
 
 
 export const GetSingleJobById=createAction('[GetjobstyById]-GetjobsById',props<{JobID:number}>())
@@ -21,7 +21,7 @@ export const updatedJobPostFailure=createAction('[updatedJobPostFailure]-Getjobs
 
 
 
-export const addJob=createAction('[addJob]-addJob',props<{newJob:jobs}>())
+export const addJob=createAction('[addJob]-addJob',props<{newJob:newJobPost}>())
 export const AddJobSuccess=createAction('[addJobsSuccess]-addJobSuccess',props<{message:string}>())
 export const AddJobFailure=createAction('[AddCoursesFailure]-addJobFailure',props<{message:string}>())
 

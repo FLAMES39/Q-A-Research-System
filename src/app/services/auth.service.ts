@@ -8,38 +8,35 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class AuthService {
 
-  constructor(  @Inject(PLATFORM_ID) private platformId: Object) { 
+  constructor(  ) { 
 
   }
   role!:string | null
   token!:string | null 
   Name!:string
+  UserID!:number 
   logOut(){
     localStorage.clear()
-  }
-  isLoggedIn(){
-    let role = localStorage.getItem('role')
-    this.role = role? role:null
-    let token = localStorage.getItem('token')
-    this.token = token? token: null
-    return this.token? true: false
   }
   loggedIn(res:loggedUserSuccess){
     localStorage.setItem('role', res.role)
     localStorage.setItem('token', res.token)
     localStorage.setItem('Name', res.Name)
   }
+
+  isLoggedIn(){
+    let role = localStorage.getItem('Name')
+    this.role = role? role:null
+    let token = localStorage.getItem('token')
+    this.token = token? token: null
+    return this.token? true: false
+  }
+
   getUserName(){
     let Name = localStorage.getItem('Name')
     return this.Name = Name? Name:'Welcome Student'
   }
-  isLoggeIn(){
-    let role= localStorage.getItem('role')
-    this.role= role? role:null
-    let token= localStorage.getItem('token')
-    this.token=token?token:null
-    return this.token? true: false 
 
-  }
+
   
 }

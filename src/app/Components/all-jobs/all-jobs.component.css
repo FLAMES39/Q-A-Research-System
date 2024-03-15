@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .container {
+    display: flex;
+    max-width: 1200px;
+    margin: 40px auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .sidebar {
+    flex-basis: 250px;
+    background: #f7f7f7;
+    padding: 20px;
+  }
+  
+  .filter-category {
+    margin-bottom: 30px;
+  }
+  
+  .filter-category select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .filter-category label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .filter-location p {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .filter-location ul {
+    list-style: none;
+  }
+  
+  .filter-location li {
+    padding: 8px 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  
+  .filter-location li:hover {
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  
+  .job-listing {
+    flex-grow: 1;
+    padding: 20px;
+    background: #fff;
+  }
+  
+  .job {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    transition: box-shadow 0.3s, border-color 0.3s;
+  }
+  
+  .job:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-color: #007bff;
+  }
+  
+  .job h3 {
+    color: #007bff;
+    margin-bottom: 5px;
+  }
+  
+  .job p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #666;
+  }
+  
+  .job button.btn {
+    padding: 8px 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .job button.btn:hover {
+    background: #0056b3;
+  }
+  
+  @media (max-width: 992px) {
+    .container {
+      flex-direction: column;
+    }
+
+    .job-listing {
+      padding-top: 0;
+    }
+  }
+  

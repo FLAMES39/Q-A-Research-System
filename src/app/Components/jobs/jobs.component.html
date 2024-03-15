@@ -19,16 +19,25 @@
             </ul>
         </div>
     </div>
-    <div class="job-listing" *ngIf="  jobs | async as job " >
-        <div  *ngFor ="let jb of job" class="job" >
+    <div class="job-listing">
+
+        <router-outlet></router-outlet>
+<div class="container">
+    <div class="job-listing" *ngIf="jobs | async as job">
+       
+        <div class="job" *ngFor="let jb of job" >
             <h3>{{jb.Title}}</h3>
             <p>{{jb.Location}}</p>
-            <p>{{jb.Description}} </p>
-            <div>
-                <!-- <button class="btn" (click)="viewMore(jb.companyID)"><a href="/single">More Details</a></button> -->
-            </div>
+            <p>{{jb.Description}}</p>
+            <button class="btn" (click)="viewJob(jb.JobID)" type="submit">More Details</button>
+    
         </div>
+    </div>
+</div>
 
+<div *ngIf="!jobs">
+    <p>No Jobs  Available!!!</p>
+</div>
     </div>
     <ng-template #noJobs>
         No Jobs  Available!!!

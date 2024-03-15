@@ -1,7 +1,7 @@
 <article class="jobcard">
-   <div  *ngIf=" job | async as jb ; else nojob">
-    <div class="content" *ngIf="jb">
-        <div class="jobbanner">
+   <div  *ngIf="this.job | async as jb">
+    <div class="content" *ngIf=" jb" >
+        <div class="jobbanner" *ngIf="this.job | async as jb">
             <h1 class="job-title">{{jb.Title}}</h1>
             <p class="job-location"><i class="fas_alt"></i> {{jb.Location}}</p>
         </div>
@@ -35,7 +35,7 @@
                     <h3>Benefits</h3>
                     <ul>
                         <li>Competitive salary and stock options.</li>
-                        <li>{{jb.SalaryRange}}</li>
+                        <li>{{jb.SalaryRange }}</li>
                     </ul>
                 </div>
             </section>
@@ -53,7 +53,8 @@
             </div>
         </div>
         <div class="proceed">
-            <a href="/apply" class="apply-button">Apply Now</a>
+            <!-- <a href="/apply" class="apply-button">Apply Now</a> -->
+            <button class="learn-more-button" type="submit" (click)="applyJob(jb.JobID)">Apply Now</button>
             <button class="learn-more-button">Learn More</button>
         </div>
     </div>

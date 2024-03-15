@@ -9,7 +9,8 @@ export const routes: Routes = [
     {path:'register',loadComponent:()=>import('../app/Components/registration/registration.component').then(r=>r.RegistrationComponent)},
     {path:'company',loadComponent:()=>import('./Components/company/company.component').then(u=>u.CompanyComponent)},
     {path:'apply',loadComponent:(()=>import('../app/Components/job-application/job-application.component').then(a=>a.JobApplicationComponent))},
-    {path:'single',loadComponent:( ()=>import('../app/Components/single-job/single-job.component').then(s=>s.SingleJobComponent))},
+    {path:'allJobs',loadComponent:( ()=>import ('../app/Components/all-jobs/all-jobs.component').then(a=>a.AllJobsComponent))},
+    {path:'single/:jobID',loadComponent:( ()=>import('../app/Components/single-job/single-job.component').then(s=>s.SingleJobComponent))},
     {path:'dashboard' , loadComponent:( ()=>import('../app/Components/Campanies/dashboard/dashboard.component').then(d=>d.DashboardComponent)),
         children:[
             {path:'posting',loadComponent:( ()=> import('../app/Components/Campanies/job-postings/job-postings.component').then(jp=>jp.JobPostingsComponent))},

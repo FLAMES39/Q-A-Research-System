@@ -5,7 +5,9 @@ import { Router } from '@angular/router';
 import { AppState } from '../../states/appState';
 import { Store } from '@ngrx/store';
 import { userRegistration } from '../../states/Actions/userActions';
-import { StoreModule } from '@ngrx/store';
+
+
+
 @Component({
   selector: 'app-registration',
   standalone: true,

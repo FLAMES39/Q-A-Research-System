@@ -4,6 +4,7 @@ import { AppState } from '../../../states/appState';
 import * as jobActions from '../../../states/Actions/JobActions'
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { addJob } from '../../../states/Actions/JobActions';
 
 @Component({
   selector: 'app-job-postings',
@@ -23,10 +24,10 @@ export class JobPostingsComponent implements OnInit{
         Title:['',[Validators.required]],
         Description:['',[Validators.required]],
         Location:['',[Validators.required]],
-        salaryRange:['',[Validators.required]],
-        type:['default',[Validators.required]],
-        postedDate:['',[Validators.required]],
-        expiryDate:['',[Validators.required]]
+        SalaryRange:['',[Validators.required]],
+        Type:['default',[Validators.required]],
+        PostedDate:['',[Validators.required]],
+        ExpiryDate:['',[Validators.required]]
 
       })
       
@@ -38,7 +39,8 @@ export class JobPostingsComponent implements OnInit{
     }
 
     postJob(){
-      this.store.dispatch(jobActions.addJob(this.postForm.value))
+      console.log(this.postForm.value);   
+      this.store.dispatch(addJob({newJob:this.postForm.value}))
     }
     
 }

@@ -14,14 +14,14 @@ export class JobsService {
     return this.http.get<jobs[]>('http://localhost:4000/jobs')
   }
 
-  addJobs(newJob:jobs):Observable<jobAddedSuccessful>{
+  addJobs(newJob:newJobPost):Observable<jobAddedSuccessful>{
     return this.http.post<jobAddedSuccessful>('http://localhost:4000/jobs',newJob)
   }
   getJobsById(JobID:number):Observable<jobs>{
     return this.http.get<jobs>(`http://localhost:4000/jobs/${JobID}`)
   }
   applyJob(applyJob:jobs):Observable<jobAppliedSuccessful>{
-    return this.http.post<jobAppliedSuccessful>('',applyJob)
+    return this.http.post<jobAppliedSuccessful>('http://localhost:4000/apply',applyJob)
   }
   getJobsByLocation(location:string):Observable<jobs>{
     return this.http.get<jobs>(``)

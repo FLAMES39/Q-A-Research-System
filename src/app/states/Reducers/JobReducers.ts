@@ -57,14 +57,14 @@ export const jobReducers = createReducer(
     on(JobAction.GetjobsSuccess ,(state, action):jobsInterface=>{
         return {
             ...state,
-            jobs:action.job,
-            JobError:''
+            JobError:'',
+            jobs:action.job
         }
     }),
     on(JobAction.GetjobsFailure ,(state, action):jobsInterface=>{
         return {
             ...state,
-            JobError:action.message,
+            JobError:action.jobError,
             jobs:[] 
 
         }

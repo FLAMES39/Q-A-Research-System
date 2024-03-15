@@ -23,15 +23,22 @@ export class LoginComponent implements OnInit{
   ngOnInit(): void {
     this.form=this.fb.group({
       
-        email:['',[Validators.required,Validators.email]],
-        password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9]{3,30}$')]]
+        Email:['',[Validators.required,Validators.email]],
+        Password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9]{3,30}$')]]
       
     })
   }
+
+
   onSubmit(){
 
   }
+
+
   onLogin(){
+    // console.log(this.form.value);
     this.store.dispatch(userLogin({loggedUser:this.form.value}))
   }
 }
+
+

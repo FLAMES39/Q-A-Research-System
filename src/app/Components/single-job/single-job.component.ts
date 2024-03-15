@@ -27,5 +27,7 @@ export class SingleJobComponent implements OnInit{
     })
     
   }
-
+  applyJob(JobID:number){
+    this.router.navigate(['/apply',JobID])
+  }
 }
