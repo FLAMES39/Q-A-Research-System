@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { CanActivateService } from './services/can-activate.service';
 
 export const routes: Routes = [
     // {path:'job',loadChildren:()=>import('./Components/jobs/job/job.module').then(j=>j.JobModule)},
@@ -7,7 +8,7 @@ export const routes: Routes = [
     {path:'footer',loadComponent:()=>import('../app/Components/footer/footer.component').then(f=>f.FooterComponent) },
     {path:'login', loadComponent:()=>import('../app/Components/login/login.component').then(l=>l.LoginComponent)},
     {path:'register',loadComponent:()=>import('../app/Components/registration/registration.component').then(r=>r.RegistrationComponent)},
-    {path:'company',loadComponent:()=>import('./Components/company/company.component').then(u=>u.CompanyComponent)},
+    {path:'company',canActivate:[CanActivateService],loadComponent:()=>import('./Components/company/company.component').then(u=>u.CompanyComponent)},
     {path:'apply',loadComponent:(()=>import('../app/Components/job-application/job-application.component').then(a=>a.JobApplicationComponent))},
     {path:'allJobs',loadComponent:( ()=>import ('../app/Components/all-jobs/all-jobs.component').then(a=>a.AllJobsComponent))},
     {path:'single/:jobID',loadComponent:( ()=>import('../app/Components/single-job/single-job.component').then(s=>s.SingleJobComponent))},

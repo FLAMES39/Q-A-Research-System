@@ -1,6 +1,6 @@
 import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
 import * as userActions  from '../Actions/userActions'
-import { iusers } from "../../interfaces";
+import { Loggedusers, iusers } from "../../interfaces";
 
 
 
@@ -10,7 +10,7 @@ export interface userinterface{
     getUsersError:string
     userRegistrationSuccess:string
     userRegistrationFailure:string
-    userLoginSuccess:string
+    userLoginSuccess: string
     userLoginFailure:string
     getUserByIDSuccess: iusers | null 
     getUserByIDFailure: string
@@ -72,7 +72,7 @@ export const userReducer = createReducer(
     on(userActions.userLoginFailure,(state,action):userinterface=>{
         return{
             ...state,
-            userLoginSuccess:'',
+            userLoginSuccess: "",
             userLoginFailure:action.message
         }
     }),

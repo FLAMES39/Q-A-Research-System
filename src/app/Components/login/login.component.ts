@@ -5,6 +5,9 @@ import { Router, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../states/appState';
 import { userLogin } from '../../states/Actions/userActions';
+import { UserService } from '../../services/user.service';
+import { Loggedusers } from '../../interfaces';
+import { userLoggedinSuccess } from '../../states/Reducers/userReducer';
 
 @Component({
   selector: 'app-login',
@@ -14,17 +17,19 @@ import { userLogin } from '../../states/Actions/userActions';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit{
-  constructor( private Router:Router , private fb:FormBuilder ,private store:Store<AppState>){
+  constructor( private Router:Router , private fb:FormBuilder ,private store:Store<AppState>, private userservice:UserService){
 
   }
 
-
+  loggedStudent!:Loggedusers;
   form!:FormGroup
   ngOnInit(): void {
+
     this.form=this.fb.group({
       
         Email:['',[Validators.required,Validators.email]],
         Password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9]{3,30}$')]]
+      
       
     })
   }
@@ -36,7 +41,7 @@ export class LoginComponent implements OnInit{
 
 
   onLogin(){
-    // console.log(this.form.value);
+    //  console.log(this.form.value);
     this.store.dispatch(userLogin({loggedUser:this.form.value}))
   }
 }

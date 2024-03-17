@@ -5,6 +5,7 @@ import * as UserActions from '../Actions/userActions'
 import { catchError, map, mergeMap, of, tap } from "rxjs";
 import { Router } from "@angular/router";
 import { error } from "console";
+import { AuthService } from "../../services/auth.service";
 
 
 
@@ -12,7 +13,7 @@ import { error } from "console";
 @Injectable()
 
 export class userEffects{
-    constructor( private action$: Actions , private userService:UserService , private router:Router){
+    constructor( private action$: Actions , private userService:UserService , private router:Router, private authservice:AuthService){
 
     }
 
@@ -32,17 +33,18 @@ export class userEffects{
             })
         )
     })
-    loginStudent$=createEffect( ()=>{
+    loggedUser$=createEffect( ()=>{
         return this.action$.pipe(
             ofType(UserActions.userLogin),
             mergeMap( action =>{
                 return this.userService.loginUser(action.loggedUser).pipe(
                     tap(
-                        ms=>{
+                        res=>{
+                            this.authservice.loggedIn(res)
                             this.router.navigate(['/jobs'])
                         }
                     ),
-                    map(msg=> UserActions.userLoginSuccess({message:msg.message})),
+                    map(msg=> UserActions.userLoginSuccess({message:msg.token})),
                     catchError(res =>of(UserActions.userLoginFailure({message:res.message})))
                 )
             })

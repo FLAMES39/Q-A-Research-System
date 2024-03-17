@@ -17,6 +17,7 @@ export class JobPostingsComponent implements OnInit{
 
     constructor(private store:Store<AppState> , private fb:FormBuilder){}
     postForm!:FormGroup
+    Type!: ['Full-time','Part-time','Contract','Temporary']
 
 
     ngOnInit(): void {

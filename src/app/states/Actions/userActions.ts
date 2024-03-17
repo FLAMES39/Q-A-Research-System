@@ -10,9 +10,9 @@ export const userRegistration = createAction('[useregister]-registration',props<
 export const userRegistrationSuccess = createAction('[userRegister]-registrationSuccess',props<{message:string}>())
 export const userRegistrationFailure= createAction('[userRegister]-registrationFailuer',props<{message:string}>())
 
-export const userLogin = createAction('[userLogin]-userLogiSuccessfull',props<{loggedUser:Loggedusers}>())
-export const userLoginSuccess = createAction('[userRegister]-LoginnSuccess',props<{message:string}>())
-export const userLoginFailure= createAction('[userRegister]-LoginFailuer',props<{message:string}>())
+export const userLogin = createAction('[userLogin]-userLogin',props<{loggedUser:Loggedusers}>())
+export const userLoginSuccess = createAction('[userLoginSuccess]-UserLoginSuccess',props<{message:string}>())
+export const userLoginFailure= createAction('[userLoginFailure]-userLoginFailure',props<{message:string}>())
 
 export const getUserByID = createAction('[getUserByID]-getUserByID',props<{UserID:number}>())
 export const getUserByIDSuccess = createAction('[getUserByIDSuccess}-getUserByIDSuccess',props<{user:iusers}>())

@@ -19,6 +19,8 @@ export interface Newusers {
 
 export interface AddUserSuccess{
     message:string
+    Name:string
+    token:string
 }
 
 export interface Loggedusers {

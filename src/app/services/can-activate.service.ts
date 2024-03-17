@@ -11,7 +11,7 @@ export class CanActivateService implements CanActivate {
 
   constructor( private authService:AuthService , private router:Router) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    if( this.authService.isLoggedIn()){
+    if( this.authService.isLoggeIn()){
       return true
     }
     else{
