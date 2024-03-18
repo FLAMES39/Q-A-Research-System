@@ -1,0 +1,63 @@
+<div class="body">
+
+    <form (ngSubmit)="onsubmit()" [formGroup]="form" class="project-form">
+        <img src="https://media.gettyimages.com/id/128502214/photo/classic-turn-of-the-century-american-house.jpg?s=612x612&w=gi&k=20&c=i4olPZuStzxhaUt8Py7FzUSRaub86j2UdvezcLPtThI=" alt="">
+        <div  >
+            <div *ngIf="errorMessage" style="color: red;">
+                <p>{{errorMessage}}</p>
+            </div>
+            <label for="name">Name:</label>
+            <div class="error"
+                *ngIf="!form.get('Name')?.valid && form.get('Name')?.touched">
+    
+                <p *ngIf="form.get('Name')!.errors!['required']">Name is required</p>
+                <p *ngIf="form.get('Name')!.errors!['unAllowedName']">Username not allowed</p>
+            </div>
+            <input type="text" id="Name" formControlName="Name">
+
+            <label for="Description">Description:</label>
+            <input type="Description" id="Description" formControlName="Description">
+            <p class="error"
+                *ngIf="!form.get('Description')?.valid && form.get('Description')?.touched">
+                Description is required
+            </p>
+
+            <label for="Email">Email:</label>
+            <input type="email" id="email" formControlName="Email">
+            <div class="error"
+                *ngIf="!form.get('Email')?.valid && form.get('Email')?.touched">
+                <p *ngIf="form.get('Email')!.errors!['required']">Email is required</p>
+                <p *ngIf="form.get('Email')!.errors!['emailUnallowed']">email is not allowed</p>
+    
+            </div>
+            <label for="Logo">Logo:</label>
+            <input type="Logo" id="Logo" formControlName="Logo">
+            <div class="error"
+                *ngIf="!form.get('Logo')?.valid && form.get('Logo')?.touched">
+                <p *ngIf="form.get('Logo')!.errors!['required']">Logo is required</p>
+                <p *ngIf="form.get('Logo')!.errors!['emailUnallowed']">Logo is not allowed</p>
+    
+            </div>
+            <label for="Password">Password:</label>
+            <input type="Password" id="password" formControlName="Password">
+            <p class="error"
+                *ngIf="!form.get('Password')?.valid && form.get('Password')?.touched">
+                password is required
+            </p>
+            <label for="ContactInfo">ContactInfo:</label>
+            <input type="ContactInfo" id="ContactInfo" formControlName="ContactInfo">
+            <p class="error"
+                *ngIf="!form.get('ContactInfo')?.valid && form.get('ContactInfo')?.touched">
+                ContactInfo is required
+            </p>
+            <div>
+            <button type="submit" (click)="submitForm()">SIGN UP</button>
+            <p class="account">You have an account as a Landlord.....<br>
+                <a routerLink="/LogLandlord">login?</a></p>
+            </div>
+        </div>
+        
+           
+    </form>
+    
+</div>
