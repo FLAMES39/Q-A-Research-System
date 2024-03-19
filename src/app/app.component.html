@@ -2,7 +2,7 @@
   <div class="navbar">
    
     <div class="navleft">
-      <a routerLink="/apply" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Appliy Job</a>
+      <a routerLink="/apply" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Applly Job</a>
       <a href="http://localhost:57050/">Query Help</a>
       <a routerLink="/jobs" routerLinkActive="active">Home</a>
       <a routerLink="/dashboard" routerLinkActive="active">Company</a>
@@ -10,6 +10,7 @@
     <div class="navRight">
       <a routerLink="register" routerLinkActive="active" *ngIf="!authservice.isLoggeIn()" >SIGN UP</a>
       <a routerLink="login" routerLinkActive="active" *ngIf="!authservice.isLoggeIn()"  >LOGIN</a>
+      <a routerLink="admin" routerLinkActive="active" *ngIf="!authservice.isLoggeIn()"  >Dashboad</a>
       <a routerLink="" routerLinkActive="active"  *ngIf="authservice.isLoggeIn()" (click)="authservice.logOut()" >Logout</a>
       <a routerLink="/profile" routerLinkActive="active" class="profile-link">
         <img src="https://secure.gravatar.com/avatar/b9a6a966ae54d4c1c74655210aa820f4?s=35&d=mm" alt="Username" class="profile-icon">
