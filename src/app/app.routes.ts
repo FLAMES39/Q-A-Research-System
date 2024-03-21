@@ -19,6 +19,9 @@ export const routes: Routes = [
             {path: 'analytics',loadComponent:(()=>import('../app/Components/Campanies/analytics/analytics.component').then(an=>an.AnalyticsComponent))},
             { path: '', redirectTo: 'job-postings', pathMatch: 'full' }
         ]
-
-}
+    },
+    // admin route
+    {
+        path: 'admin', loadComponent: (()=>import('../app/Components/admin/admin.component').then(a=>a.AdminComponent))
+    },
 ];

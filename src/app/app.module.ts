@@ -22,12 +22,12 @@ import { jobReducers } from './states/Reducers/JobReducers';
 
 @NgModule({
     declarations: [
-        AppComponent,
- 
+     
     ],
     providers: [],
-    bootstrap: [AppComponent],
+    bootstrap: [],
     imports: [
+        AppComponent,
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
