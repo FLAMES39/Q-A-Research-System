@@ -135,4 +135,25 @@ export interface updatedJobPostSuccess{
     message:string
 }
 
+export interface companyAddedSuccess{
+    message:string
+}
 
+export interface companyLoggedSuccess{
+    role:string
+    token:string
+    Name:string
+    CompanyID:number
+}
+
+
+export interface iCompanies{
+    CompanyID:number
+    Name:string
+    Description:string
+    Industry:string
+    Logo:string
+    ContactInfo:string
+    Email:string
+    Password:string
+}

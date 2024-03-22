@@ -13,9 +13,9 @@ import { AppState } from '../../../states/appState';
   standalone: true,
   imports:[CommonModule,ReactiveFormsModule,RouterModule],
   templateUrl: './company-Register.component.html',
-  styleUrl: './company-Register.component.css'
+  styleUrl: './company-register.component.css'
 })
-export class CompanyLRegisterComponent {
+export class CompanyRegisterComponent {
   constructor(private fb:FormBuilder, private store:Store<AppState> ,private authservice:AuthService){}
   form!: FormGroup
   errorMessage=null
@@ -23,10 +23,14 @@ export class CompanyLRegisterComponent {
   ngOnInit(): void {
    this.form=this.fb.group({
     
-      name:['',[Validators.required,this.checkUnAllowedName]],  
-      email:[null,[Validators.required,Validators.email],[<AsyncValidatorFn>this.checkEmail]],
-      password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9]{3,30}$')]],
-      propertyDocs:['',[Validators.required]]
+      Name:['',[Validators.required,this.checkUnAllowedName]],  
+      Description:['',[Validators.required]],
+      Industry:['',[Validators.required]],
+      Logo:['',[Validators.required]],
+      ContactInfo:['',[Validators.required]],
+      Email:[null,[Validators.required,Validators.email],[<AsyncValidatorFn>this.checkEmail]],
+      Password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9]{3,30}$')]],
+      
     
    })
   }

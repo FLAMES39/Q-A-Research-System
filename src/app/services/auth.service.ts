@@ -1,12 +1,13 @@
-import { Injectable, PLATFORM_ID } from '@angular/core';
+import { INJECTOR, Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { loggedUserSuccess } from '../interfaces';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor( ) { 
+  constructor(@Inject (PLATFORM_ID ) private platiformId: object ) { 
 
   }
   role!:string | null
@@ -15,13 +16,18 @@ export class AuthService {
   UserID!:number 
 
   logOut(){
-    localStorage.clear()
+    if(isPlatformBrowser(this.platiformId)){
+      localStorage.clear()
+    }
   }
 
   loggedIn(res:loggedUserSuccess){
-    localStorage.setItem('role', res.role)
-    localStorage.setItem('token', res.token)
-    localStorage.setItem('Name', res.Name)
+    if (isPlatformBrowser(this.platiformId)) {
+      localStorage.setItem('role', res.role)
+      localStorage.setItem('token', res.token)
+      localStorage.setItem('Name', res.Name)
+      
+    }
   }
   
 
@@ -29,15 +35,28 @@ export class AuthService {
 
 
   getUserName(){
-    let Name = localStorage.getItem('Name')
-    return this.Name = Name? Name:'Welcome Student'
+    if(isPlatformBrowser(this.platiformId)){
+      let Name = localStorage.getItem('Name')
+      return this.Name = Name? Name:'Welcome Student'
+    }else{
+      this.Name = 'Welcome Student'
+    }
+    return this.Name
   }
+
+
   isLoggeIn(){
-    let role= localStorage.getItem('role')
-    this.role= role? role:null
-    let token= localStorage.getItem('token')
-    this.token=token?token:null
-    return this.token? true: false 
+    if (isPlatformBrowser(this.platiformId)) {
+      let role= localStorage.getItem('role')
+      this.role= role? role:null
+      let token= localStorage.getItem('token')
+      this.token=token?token:null
+      
+    }else{
+      this.role =null
+      this.token =null
+  }
+    return !!this.token
 
   }
   

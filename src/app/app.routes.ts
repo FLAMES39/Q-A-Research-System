@@ -12,7 +12,10 @@ export const routes: Routes = [
     {path:'apply',loadComponent:(()=>import('../app/Components/job-application/job-application.component').then(a=>a.JobApplicationComponent))},
     {path:'allJobs',loadComponent:( ()=>import ('../app/Components/all-jobs/all-jobs.component').then(a=>a.AllJobsComponent))},
     {path:'single/:jobID',loadComponent:( ()=>import('../app/Components/single-job/single-job.component').then(s=>s.SingleJobComponent))},
+    {path:'compLog', loadComponent:( ()=>import('../app/Components/Campanies/company-login/company-login.component').then(cl=>cl.CompanyLoginComponent))},
+    {path:'compReg', loadComponent:( ()=>import('../app/Components/Campanies/company-register/company-register.component').then(cr=>cr.CompanyRegisterComponent))},
     {path:'dashboard' , loadComponent:( ()=>import('../app/Components/Campanies/dashboard/dashboard.component').then(d=>d.DashboardComponent)),
+    
         children:[
             {path:'posting',loadComponent:( ()=> import('../app/Components/Campanies/job-postings/job-postings.component').then(jp=>jp.JobPostingsComponent))},
             {path: 'tracking',loadComponent:( ()=>import('../app/Components/Campanies/applicant-tracking/applicant-tracking.component').then(t=>t.ApplicantTrackingComponent))},
