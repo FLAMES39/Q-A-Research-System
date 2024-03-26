@@ -140,10 +140,12 @@ export interface companyAddedSuccess{
 }
 
 export interface companyLoggedSuccess{
-    role:string
+    CompanyID:number
     token:string
     Name:string
-    CompanyID:number
+    role:string
+    
+   
 }
 
 

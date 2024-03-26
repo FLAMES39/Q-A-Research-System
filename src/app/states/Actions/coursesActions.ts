@@ -1,27 +1,31 @@
 import { createAction, props } from "@ngrx/store";
-import { iCourses, iDepartments } from "../../interfaces";
+import { iCompanies, iCourses, iDepartments } from "../../interfaces";
 
 
 
 
-export const Getcourses = createAction('[courses]-getCourses')
-export const GetCoursesSuccess = createAction('[courses]-getCourseSuccess',props<{Courses:iCourses[]}>())
-export const GetCoursesFailure = createAction('[courses]-getCourseFailure',props<{message:string}>())
+export const GetCompany = createAction('[Company]-getCompany')
+export const GetCompanySuccess = createAction('[Company]-getCompanyuccess',props<{company:iCompanies[]}>())
+export const GetCompanyFailure = createAction('[Company]-getCourseFailure',props<{message:string}>())
 
 
-export const GetSingleCoursesById=createAction('[GetCoursestyById]-GetPropertyById',props<{CoursesID:number}>())
-export const GetCoursesByIdSuccess=createAction('[GetCoursesByIdSuccess]-GetPropertyByIdSuccess',props<{Courses:iCourses}>())
-export const GetCoursesByIdFailure=createAction('[GetCoursesByIdFailure]-GetPropertyByIdFailure',props<{message:string}>())
+export const GetSingleCompanyById=createAction('[GetCompanytyById]-GetPropertyById',props<{CompanyID:number}>())
+export const GetCompanyByIdSuccess=createAction('[GetCompanyByIdSuccess]-GetPropertyByIdSuccess',props<{Company:iCompanies}>())
+export const GetCompanyByIdFailure=createAction('[GetCompanyByIdFailure]-GetPropertyByIdFailure',props<{message:string}>())
 
 
-export const addCourses=createAction('[addCourses]-addCourses',props<{newCourses:iCourses}>())
-export const AddCoursesSuccess=createAction('[AddCoursesSuccess]-AddCoursesSuccess',props<{message:string}>())
-export const AddCoursesFailure=createAction('[AddCoursesFailure]-CoursesFailure',props<{message:string}>())
+export const addCompany=createAction('[addCompany]-addCompany',props<{newCompany:iCompanies}>())
+export const AddCompanySuccess=createAction('[AddCompanySuccess]-AddCompanySuccess',props<{message:string}>())
+export const AddCompanyFailure=createAction('[AddCompanyFailure]-CompanyFailure',props<{message:string}>())
 
 
-export const GetCoursesById=createAction('[GetPropertyById]-GetPropertyById',props<{courseID:number}>())
+export const LoggedCompany=createAction('[LoggedCompany]-LoggedCompany',props<{loggedCompany:iCompanies}>())
+export const LoggedCompanySuccess=createAction('[LoggedCompanySuccess]-LoggedCompanySuccess',props<{message:string}>())
+export const LoggedCompanyFailure=createAction('[LoggedCompanyFailure]-CompanyFailure',props<{message:string}>())
+
+export const GetCompanyById=createAction('[GetcompanyById]-GetcompanyById',props<{companyID:number}>())
 
 
-export const GetDepartments = createAction('[Departments]-getCourses')
+export const GetDepartments = createAction('[Departments]-getCompany')
 export const GetDepartmentsSuccess = createAction('[Departments]-GetDepartmentsSuccess',props<{Departments:iDepartments[]}>())
 export const GetDepartmentsFailure = createAction('[Departments]-GetDepartmentsFailure',props<{message:string}>())

@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../states/appState';
+import {LoggedCompany} from '../../../states/Actions/coursesActions'
+
 
 @Component({
   selector: 'app-company-login',
@@ -30,7 +32,7 @@ export class CompanyLoginComponent implements OnInit{
   }
   
   loginCompany(){
-
+    this.store.dispatch(LoggedCompany({loggedCompany:this.loginForm.value}))
   }
 
 }

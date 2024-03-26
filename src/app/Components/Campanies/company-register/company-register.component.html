@@ -1,63 +1,82 @@
+
 <div class="body">
-
+    
     <form (ngSubmit)="onsubmit()" [formGroup]="form" class="project-form">
-        <img src="https://media.gettyimages.com/id/128502214/photo/classic-turn-of-the-century-american-house.jpg?s=612x612&w=gi&k=20&c=i4olPZuStzxhaUt8Py7FzUSRaub86j2UdvezcLPtThI=" alt="">
-        <div  >
-            <div *ngIf="errorMessage" style="color: red;">
-                <p>{{errorMessage}}</p>
-            </div>
-            <label for="name">Name:</label>
-            <div class="error"
-                *ngIf="!form.get('Name')?.valid && form.get('Name')?.touched">
-    
-                <p *ngIf="form.get('Name')!.errors!['required']">Name is required</p>
-                <p *ngIf="form.get('Name')!.errors!['unAllowedName']">Username not allowed</p>
-            </div>
-            <input type="text" id="Name" formControlName="Name">
 
-            <label for="Description">Description:</label>
-            <input type="Description" id="Description" formControlName="Description">
-            <p class="error"
-                *ngIf="!form.get('Description')?.valid && form.get('Description')?.touched">
-                Description is required
-            </p>
+            <div class="form-content">
+                <div *ngIf="errorMessage" class="error-message">
+                    <p>{{errorMessage}}</p>
+                </div>
+    
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="Name" formControlName="Name" placeholder="Enter your name">
+                    <div *ngIf="!form.get('Name')?.valid && form.get('Name')?.touched" class="error-message">
+                        <p *ngIf="form.get('Name')!.errors!['required']">Name is required</p>
+                        <p *ngIf="form.get('Name')!.errors!['unAllowedName']">Username not allowed</p>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="Description">Description:</label>
+                    <input type="text" id="Description" formControlName="Description" placeholder="Describe your company">
+                    <div *ngIf="!form.get('Description')?.valid && form.get('Description')?.touched" class="error-message">
+                        Description is required
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="Industry">Industry:</label>
+                    <input type="text" id="Industry" formControlName="Industry" placeholder="Whats Your Industry?">
+                    <div *ngIf="!form.get('Industry')?.valid && form.get('Industry')?.touched" class="error-message">
+                        Industry is required
+                    </div>
+                </div>
 
-            <label for="Email">Email:</label>
-            <input type="email" id="email" formControlName="Email">
-            <div class="error"
-                *ngIf="!form.get('Email')?.valid && form.get('Email')?.touched">
-                <p *ngIf="form.get('Email')!.errors!['required']">Email is required</p>
-                <p *ngIf="form.get('Email')!.errors!['emailUnallowed']">email is not allowed</p>
+                <div class="form-group">
+                    <label for="Logo" class="file-label">
+                        <i class="fa fa-upload" aria-hidden="true"></i> Upload your logo
+                    </label>
+                    <input type="file" id="Logo" formControlName="Logo" accept="image/*" class="file-input">
+                    <div *ngIf="!form.get('Logo')?.valid && form.get('Logo')?.touched" class="error-message">
+                        <p *ngIf="form.get('Logo')!.errors!['required']">Logo is required</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ContactInfo">Contact Info:</label>
+                    <input type="text" id="ContactInfo" formControlName="ContactInfo" placeholder="How can we contact you?">
+                    <div *ngIf="!form.get('ContactInfo')?.valid && form.get('ContactInfo')?.touched" class="error-message">
+                        Contact info is required
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Email">Email:</label>
+                    <input type="email" id="email" formControlName="Email" placeholder="Enter your email">
+                    <div *ngIf="!form.get('Email')?.valid && form.get('Email')?.touched" class="error-message">
+                        <p *ngIf="form.get('Email')!.errors!['required']">Email is required</p>
+                        <p *ngIf="form.get('Email')!.errors!['emailUnallowed']">Email is not allowed</p>
+                    </div>
+                </div>            
     
-            </div>
-            <label for="Logo">Logo:</label>
-            <input type="Logo" id="Logo" formControlName="Logo">
-            <div class="error"
-                *ngIf="!form.get('Logo')?.valid && form.get('Logo')?.touched">
-                <p *ngIf="form.get('Logo')!.errors!['required']">Logo is required</p>
-                <p *ngIf="form.get('Logo')!.errors!['emailUnallowed']">Logo is not allowed</p>
+                <div class="form-group">
+                    <label for="Password">Password:</label>
+                    <input type="password" id="password" formControlName="Password" placeholder="Enter a password">
+                    <div *ngIf="!form.get('Password')?.valid && form.get('Password')?.touched" class="error-message">
+                        Password is required
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button type="submit" (click)="submitForm()">SIGN UP</button>
+                </div>
     
+                <div class="account">
+                    <p>You have an account as a Landlord.....<br>
+                    <a routerLink="/compLog">login?</a></p>
+                </div>
             </div>
-            <label for="Password">Password:</label>
-            <input type="Password" id="password" formControlName="Password">
-            <p class="error"
-                *ngIf="!form.get('Password')?.valid && form.get('Password')?.touched">
-                password is required
-            </p>
-            <label for="ContactInfo">ContactInfo:</label>
-            <input type="ContactInfo" id="ContactInfo" formControlName="ContactInfo">
-            <p class="error"
-                *ngIf="!form.get('ContactInfo')?.valid && form.get('ContactInfo')?.touched">
-                ContactInfo is required
-            </p>
-            <div>
-            <button type="submit" (click)="submitForm()">SIGN UP</button>
-            <p class="account">You have an account as a Landlord.....<br>
-                <a routerLink="/LogLandlord">login?</a></p>
-            </div>
-        </div>
-        
-           
+       
     </form>
-    
 </div>

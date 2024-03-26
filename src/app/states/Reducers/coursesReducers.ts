@@ -1,103 +1,126 @@
 import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
-import { iCourses, iDepartments } from "../../interfaces";
+import { iCompanies,  iDepartments } from "../../interfaces";
 import * as courseActions from '../Actions/coursesActions'
 
-export interface  coursesInterface{
-    courses:iCourses[]
+export interface  companyInterface{
+    company:iCompanies[]
     GetDepartmentsSuccess:iDepartments[] | null
     courseError:string
-    AddCoursesSuccess:string
-    AddCoursesFailure:string
-    Propertyid:number
-    GetCoursesByIdSuccess:iCourses | null
-    GetCoursesByIdFailure:string
+    AddCompanySuccess:string
+    AddCompanyFailure:string
+    loggedCompanySuccess:string
+    loggedCompanyFailure: string
+    companyID:number
+    GetCompanyByIdSuccess:iCompanies | null
+    GetCompanyByIdFailure:string
     GetDepartmentsFailure:string
     
 }
 
 
 
-const initialState:coursesInterface={
-    courses: [],
+const initialState:companyInterface={
+    company: [],
     courseError: "",
-    AddCoursesSuccess: "",
-    AddCoursesFailure: "",
-    Propertyid: 0,
-    GetCoursesByIdSuccess: null,
-    GetCoursesByIdFailure: "",
+    AddCompanySuccess: "",
+    AddCompanyFailure: "",
+    companyID: 0,
+    GetCompanyByIdSuccess: null,
+    GetCompanyByIdFailure: "",
     GetDepartmentsSuccess: null,
-    GetDepartmentsFailure: ""
+    GetDepartmentsFailure: "",
+    loggedCompanySuccess: "",
+    loggedCompanyFailure: ""
 }
 
 
 
-const getCourseState = createFeatureSelector<coursesInterface>('courses')
-export const getCourses = createSelector(getCourseState,(state)=>state.courses) 
-export const getCourseById = createSelector(getCourseState,(state)=>state.Propertyid)
-export const getCourseFailure =createSelector(getCourseState,(state)=>state.courseError)
-export const getSingleCourse = createSelector(getCourseState,(state) =>state.GetCoursesByIdSuccess)
+const getCompanytate = createFeatureSelector<companyInterface>('company')
+export const getCompany = createSelector(getCompanytate,(state)=>state.company) 
+export const getCourseById = createSelector(getCompanytate,(state)=>state.companyID)
+export const getCourseFailure =createSelector(getCompanytate,(state)=>state.courseError)
+export const getSingleCourse = createSelector(getCompanytate,(state) =>state.GetCompanyByIdSuccess)
 
-const AddCourseState = createFeatureSelector<coursesInterface>('addCourse')
-export  const AddCourseSuccess = createSelector(AddCourseState,(state)=>state.AddCoursesSuccess)
-export const AddCoursesFailure = createSelector(AddCourseState,(state)=>state.AddCoursesFailure)
+const AddCompanytate = createFeatureSelector<companyInterface>('addCourse')
+export  const AddCompanyuccess = createSelector(AddCompanytate,(state)=>state.AddCompanySuccess)
+export const AddCompanyFailure = createSelector(AddCompanytate,(state)=>state.AddCompanyFailure)
 
-const  getCourseSuccessByIdState = createFeatureSelector<coursesInterface>('property')
-export const getCourseSuccessById = createSelector(getCourseSuccessByIdState, (state) => state.courses)
-export const getCourseFailureById = createSelector(getCourseSuccessByIdState, (state) => state.courseError)
+const LoginCompanytate = createFeatureSelector<companyInterface>('LoginCourse')
+export  const LoginCompanyuccess = createSelector(LoginCompanytate,(state)=>state.loggedCompanySuccess)
+export const LoginCompanyFailure = createSelector(LoginCompanytate,(state)=>state.loggedCompanyFailure)
+
+const  getCompanyuccessByIdState = createFeatureSelector<companyInterface>('company')
+export const getCompanyuccessById = createSelector(getCompanyuccessByIdState, (state) => state.company)
+export const getCourseFailureById = createSelector(getCompanyuccessByIdState, (state) => state.courseError)
 
 
 
-export const coursesReducers =createReducer(
+export const CompanyReducers =createReducer(
     initialState,
-    on(courseActions.GetCoursesSuccess,(state,action):coursesInterface=>{
+    on(courseActions.GetCompanySuccess,(state,action):companyInterface=>{
         return{
             ...state,
             courseError:'',
-            courses:action.Courses
+            company:action.company
         }
     }),
-    on(courseActions.GetCoursesFailure,(state,action):coursesInterface=>{
+    on(courseActions.GetCompanyFailure,(state,action):companyInterface=>{
         return{
             ...state,
             courseError:action.message,
-            courses:[]       
+            company:[]       
         }
     }),
-    on(courseActions.AddCoursesSuccess,(state,action):coursesInterface=>{
+    on(courseActions.LoggedCompanySuccess,(state,action):companyInterface=>{
         return{
             ...state,
-            AddCoursesSuccess:action.message ,
-            AddCoursesFailure:''
+            loggedCompanySuccess:action.message,
+            loggedCompanyFailure:'',
+           
         }
     }),
-    on(courseActions.AddCoursesFailure,(state,action):coursesInterface=>{
+    on(courseActions.LoggedCompanyFailure,(state,action):companyInterface=>{
         return{
             ...state,
-            AddCoursesFailure:action.message ,
-            AddCoursesSuccess:''
+            loggedCompanyFailure:action.message,
+            loggedCompanySuccess:''       
         }
     }),
-    on(courseActions.GetCoursesById,(state,action):coursesInterface=>{
+    on(courseActions.AddCompanySuccess,(state,action):companyInterface=>{
         return{
             ...state,
-            Propertyid:action.courseID
+            AddCompanySuccess:action.message ,
+            AddCompanyFailure:''
         }
     }),
-    on(courseActions.GetCoursesByIdSuccess,(state,action):coursesInterface=>{
+    on(courseActions.AddCompanyFailure,(state,action):companyInterface=>{
         return{
             ...state,
-            GetCoursesByIdSuccess:action.Courses,
-            GetCoursesByIdFailure:''
+            AddCompanyFailure:action.message ,
+            AddCompanySuccess:''
         }
     }),
-    on(courseActions.GetDepartmentsSuccess,(state,action):coursesInterface=>{
+    on(courseActions.GetCompanyById,(state,action):companyInterface=>{
+        return{
+            ...state,
+            companyID:action.companyID
+        }
+    }),
+    on(courseActions.GetCompanyByIdSuccess,(state,action):companyInterface=>{
+        return{
+            ...state,
+            GetCompanyByIdSuccess:action.Company,
+            GetCompanyByIdFailure:''
+        }
+    }),
+    on(courseActions.GetDepartmentsSuccess,(state,action):companyInterface=>{
         return{
             ...state,
             GetDepartmentsSuccess:action.Departments,
             GetDepartmentsFailure:''
         }
     }),
-    on(courseActions.GetDepartmentsFailure,(state,action):coursesInterface=>{
+    on(courseActions.GetDepartmentsFailure,(state,action):companyInterface=>{
         return{
             ...state,
             GetDepartmentsFailure:action.message,

@@ -2,7 +2,11 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { CoursesService } from "../../services/courses.service";
 import * as courseAction from "../Actions/coursesActions"
-import { catchError, map, mergeMap, of, switchMap } from "rxjs";
+import { catchError, map, mergeMap, of, switchMap, tap } from "rxjs";
+import { CompanyService } from "../../services/company.service";
+import { AuthService } from "../../services/auth.service";
+import { error } from "console";
+import { Router } from "@angular/router";
 
 
 
@@ -10,48 +14,69 @@ import { catchError, map, mergeMap, of, switchMap } from "rxjs";
 @Injectable()
 
 export class courseEffects {
-    constructor( private action$:Actions, private courseservice:CoursesService){}
+    constructor( private action$:Actions, private companyservice:CompanyService, private authservice:AuthService,private router: Router){}
 
     getCourses$ = createEffect( () => {
         return this.action$.pipe(
-            ofType(courseAction.Getcourses),
+            ofType(courseAction.GetCompany),
             mergeMap( action =>{
-                return this.courseservice.getCourses().pipe(
+                return this.companyservice.getCompaany().pipe(
                     //success
-                    map(Courses=>{
-                        return courseAction.GetCoursesSuccess({ Courses })
+                    map(company=>{
+                        return courseAction.GetCompanySuccess({ company })
                     }),
-                    catchError(error => of(courseAction.GetCoursesFailure({message: error})))
+                    catchError(error => of(courseAction.GetCompanyFailure({message: error})))
                 )
             })
         )
     })
 
-    addCoures$ = createEffect( ()=>{
+    addCompany$ = createEffect( ()=>{
         return this.action$.pipe(
-            ofType(courseAction.addCourses),
+            ofType(courseAction.addCompany),
             mergeMap(action =>{
-                return this.courseservice.addCourses(action.newCourses).pipe(
-                    map( msg => courseAction.AddCoursesSuccess({message:msg.message})
+                return this.companyservice.addCompany(action.newCompany).pipe(
+                    map( msg => courseAction.AddCompanySuccess({message:msg.message})
                     ),
-                    catchError(error => of(courseAction.AddCoursesFailure({ message: error })))
+                    catchError(error => of(courseAction.AddCompanyFailure({ message: error })))
                 )
             }),
             //refreshing behaviour after adding a property house
-            switchMap(() => [courseAction.Getcourses()])
+            switchMap(() => [courseAction.GetCompany()])
             
         )
     })
 
-    getCourseByID$ = createEffect( ()=>{
+
+    loggedCompany$ = createEffect( ()=>{
         return this.action$.pipe(
-            ofType(courseAction.GetCoursesById),
+            ofType(courseAction.LoggedCompany),
             mergeMap( action =>{
-                return this.courseservice.getCourseById(action.courseID).pipe(
-                    map(Courses => {
-                        return courseAction.GetCoursesByIdSuccess({Courses})
+                return this.companyservice.loggedCompany(action.loggedCompany).pipe(
+                    tap(res => {
+                        this.authservice.CompanyloggedIn(res),
+                        this.router.navigate(['/dashboard'])
                     }),
-                    catchError(error=> of(courseAction.GetCoursesByIdFailure({message:error})))
+                    
+                    map(msg => courseAction.LoggedCompanySuccess({
+                        message: ""
+                    })),
+                    catchError(error=> of(courseAction.LoggedCompanyFailure({message:error})))
+                )
+            })
+        )
+    })
+
+
+    getCompanyByID$ = createEffect( ()=>{
+        return this.action$.pipe(
+            ofType(courseAction.GetCompanyById),
+            mergeMap( action =>{
+                return this.companyservice.getCompanyByID(action.companyID).pipe(
+                    map(Company => {
+                        return courseAction.GetCompanyByIdSuccess({Company})
+                    }),
+                    catchError(error=> of(courseAction.GetCompanyByIdFailure({message:error})))
                 )
             })
         )

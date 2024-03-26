@@ -11,6 +11,8 @@ import { userReducer } from './states/Reducers/userReducer';
 import { userEffects } from './states/Effects/userEffects';
 import { jobEffects } from './states/Effects/JobEffects';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { courseEffects } from './states/Effects/coursesEffects';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 export const appConfig: ApplicationConfig = {
@@ -18,7 +20,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(), 
     provideStore({user:userReducer, jobs:jobReducers}),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), 
-    provideEffects([userEffects,jobEffects]),
-    provideHttpClient(withFetch())]
+    provideEffects([userEffects,jobEffects,courseEffects]),
+    provideHttpClient(withFetch()), provideAnimationsAsync()]
   
 };

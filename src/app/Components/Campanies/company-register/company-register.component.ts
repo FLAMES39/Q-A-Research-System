@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../states/appState';
+import {addCompany} from '../../../states/Actions/coursesActions'
 
 
 
@@ -60,11 +61,8 @@ onsubmit(){
 }
 
 submitForm(){
-//  console.log(this.form.value);
-// this.landlordservice.addlandLord(this.form.value).subscribe(res=>{
-//   res.message
-//   this.authservice.loggedIn(res)
-// })
-// this.store.dispatch(RegisteredLandlord({landlord:this.form.value}))
+console.log(this.form.value);
+
+this.store.dispatch(addCompany({newCompany:this.form.value}))
 }
 }

@@ -24,7 +24,7 @@ export class userEffects{
                 return this.userService.registerStudent(action.newUser).pipe(
                     tap(
                         ms=>{
-                            this.router.navigate(['/jobs'])
+                            this.router.navigate(['/login'])
                         }
                     ),
                     map(ms=> UserActions.userRegistrationSuccess({message:ms.message})),

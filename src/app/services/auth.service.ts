@@ -1,5 +1,5 @@
 import { INJECTOR, Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { loggedUserSuccess } from '../interfaces';
+import { companyLoggedSuccess, loggedUserSuccess } from '../interfaces';
 import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
@@ -30,6 +30,14 @@ export class AuthService {
     }
   }
   
+  CompanyloggedIn(res:companyLoggedSuccess){
+    if (isPlatformBrowser(this.platiformId)) {
+      localStorage.setItem('role', res.role)
+      localStorage.setItem('token', res.token)
+      localStorage.setItem('Name', res.Name)
+      
+    }
+  }
 
 
 
@@ -59,5 +67,27 @@ export class AuthService {
     return !!this.token
 
   }
+
+  isCompanyLoggeIn(){
+    if (isPlatformBrowser(this.platiformId)) {
+      let role= localStorage.getItem('role')
+      this.role= role? role:null
+      let token= localStorage.getItem('token')
+      this.token=token?token:null
+      
+    }else{
+      this.role =null
+      this.token =null
+  }
+    return !!this.token
+
+  }
   
+  getRole(){
+    let role = localStorage.getItem('role')
+    return role==='Company'?true:false
+  }
 }
+  
+
+

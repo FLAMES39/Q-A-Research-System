@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +24,7 @@ import { jobReducers } from './states/Reducers/JobReducers';
     declarations: [
      
     ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [],
     bootstrap: [],
     imports: [

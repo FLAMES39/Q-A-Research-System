@@ -1,5 +1,5 @@
 import { jobsInterface } from "./Reducers/JobReducers";
-import { coursesInterface } from "./Reducers/coursesReducers";
+import { companyInterface } from "./Reducers/coursesReducers";
 import { userinterface } from "./Reducers/userReducer";
 
 
@@ -7,6 +7,6 @@ import { userinterface } from "./Reducers/userReducer";
 
 export interface AppState{
     user:userinterface
-    courses:coursesInterface
+    company:companyInterface
     jobs:jobsInterface
 }

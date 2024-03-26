@@ -10,12 +10,23 @@ export class CompanyService {
 
   constructor(private http:HttpClient) { }
 
-  addCompany(newCourse:iCompanies):Observable<companyAddedSuccess>{
-    return this.http.post<companyAddedSuccess>('',newCourse)
+  addCompany(newCompany:iCompanies):Observable<companyAddedSuccess>{
+    return this.http.post<companyAddedSuccess>('http://localhost:4000/companies',newCompany)
   }
 
-  loggedCompany(loggedCourse:iCompanies):Observable<companyLoggedSuccess>{
-    return this.http.post<companyLoggedSuccess>('',loggedCourse)
+
+  loggedCompany(loggedCompany:iCompanies):Observable<companyLoggedSuccess>{
+    return this.http.post<companyLoggedSuccess>('http://localhost:4000/companies/login', loggedCompany)
+  }
+
+
+  getCompanyByID(CompanyID:number):Observable<iCompanies>{
+    return this.http.get<iCompanies>(``)
+  }
+
+
+  getCompaany():Observable<iCompanies[]>{
+    return this.http.get<iCompanies[]>('http://localhost:4000/companies')
   }
 
 }

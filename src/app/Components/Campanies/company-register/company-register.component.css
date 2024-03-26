@@ -1,91 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #ECF0F3;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f5f5f5;
-    font-family: 'Roboto', sans-serif;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJc589QOUXWZ5jVZizjWl0H5TYL8leuf53JNcaZVhZ_A&s');
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-.project-form {
-    width: 400px;
-    background-color: #ffffff;
-    border-radius: 10px;
+.container {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
 }
 
-.project-form img {
-    width: 100%;
-    border-radius: 10px 10px 0 0;
-    margin-bottom: 20px;
+
+
+/* Form styling */
+form {
+    flex-basis: 50%;
+    padding: 2em;
+    background: linear-gradient(to bottom right, #8e2de2, #4a00e0); /* A vibrant gradient background */
 }
 
-.label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-    width: calc(100% - 20px);
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    transition: border-color 0.3s ease;
-    font-size: 16px;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-    outline: none;
-    border-color: #007bff;
-}
-
-.error-message p {
-    color: #dc3545;
-    margin: 5px 0;
-}
-
-.submit-button {
-    background-color: #007bff;
+/* Form content */
+.form-content {
+    padding: 1em;
     color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    padding: 12px 0;
-    width: 100%;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-.submit-button:hover {
-    background-color: #0056b3;
+/* Labels and inputs */
+.form-group label {
+    font-weight: 600;
+    margin-bottom: .5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: .75rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: none;
+    margin-top: .25rem;
+}
+
+.form-group .file-input {
+    display: none; /* Hide the default input */
+}
+
+/* Custom file upload button */
+.file-label {
+    display: block;
+    background: #ffffff;
+    color: #333;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 1rem;
+}
+
+.file-label:hover {
+    background-color: #e0e0e0;
+}
+
+.file-label:after {
+    content: 'Upload image';
+    display: block;
+    margin-top: .5rem;
+    font-size: .75rem;
+    color: #999;
+}
+
+/* Error message styling */
+.error-message {
+    color: red;
+    background-color: #f5c6cb;
+    border-color: #f5c2c7;
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+/* Button styling */
+.button-container {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.button-container button {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button-container button:hover {
+    background-color:green;
+    color: #ffffff;
 }
 
 .account {
-    margin-top: 20px;
-    font-size: 14px;
+    font-size: 0.9rem;
     text-align: center;
-    color: #333;
+    margin-top: 2rem;
+    color: #dddddd;
 }
 
 .account a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s ease;
+    color: #ffffff;
+    text-decoration: underline;
 }
-
 .account a:hover {
-    color: #0056b3;
+    color: red;
+    text-decoration: underline;
 }
 
-@media (max-width: 600px) {
-    .project-form {
-        width: 300px;
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .image {
+        flex-basis: auto;
+        height: 300px;
+    }
+
+    form {
+        flex-basis: auto;
     }
 }
