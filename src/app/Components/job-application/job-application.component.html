@@ -1,63 +1,86 @@
-<form [formGroup]="jobApplicationForm" (ngSubmit)="onSubmit()" class="job-application-form">
-  <!-- Personal Details Section -->
-  <div class="form-section" formGroupName="personalDetails">
+<form (ngSubmit)="onSubmit()" [formGroup]="jobApplicationForm" class="job-application-form">
+  <!-- Personal Details -->
+  <div class="form-section">
     <h2>Personal Details</h2>
-    <div class="input-group">
-      <label for="name">Name</label>
-      <input formControlName="name" id="name" type="text" placeholder="Your Name">
-      <div *ngIf="jobApplicationForm.get('personalDetails.name').errors?.['required']" class="error">Name is required</div>
-    </div>
-    <div class="input-group">
-      <label for="email">Email</label>
-      <input formControlName="email" id="email" type="email" placeholder="Your Email">
-      <div *ngIf="jobApplicationForm.get('personalDetails.email').errors?.['required']" class="error">Email is required</div>
-      <div *ngIf="jobApplicationForm.get('personalDetails.email').errors?.['email']" class="error">Enter a valid email</div>
-    </div>
-    <!-- Add other personal details fields with similar validation messages -->
+    <label for="Name">First Name:</label>
+    <input type="text" formControlName="Name" id="Name">
+    <div *ngIf="jobApplicationForm.get('Name')?.invalid && (jobApplicationForm.get('Name')?.dirty || jobApplicationForm.get('Name')?.touched)" class="error-message">Name is required.</div>
+
+    <label for="Email">Email:</label>
+    <input type="Email" formControlName="Email" id="Email">
+    <div *ngIf="jobApplicationForm.get('Email')?.invalid && (jobApplicationForm.get('Email')?.dirty || jobApplicationForm.get('Email')?.touched)" class="error-message">A valid Email is required.</div>
+    
+    <label for="contactInfo">contactInfo:</label>
+    <input type="text" formControlName="contactInfo" id="contactInfo">
+    <div *ngIf="jobApplicationForm.get('contactInfo')?.invalid && (jobApplicationForm.get('contactInfo')?.dirty || jobApplicationForm.get('contactInfo')?.touched)" class="error-message">ContactInfo is required.</div>
+
   </div>
 
-  <!-- Employment History Section -->
+  <!-- Employment History -->
   <div class="form-section" formArrayName="employmentHistory">
     <h2>Employment History</h2>
-    <button type="button" (click)="addEmploymentHistory()" class="add-more">Add Employment History</button>
-    <div *ngFor="let employment of jobApplicationForm.get('employmentHistory').controls; let i=index" [formGroupName]="i">
-      <div class="input-group">
-        <label for="companyName">Company Name</label>
-        <input formControlName="companyName" id="companyName" type="text" placeholder="Company Name">
-        <div *ngIf="employment.get('companyName').errors?.['required']" class="error">Company name is required</div>
-      </div>
-      <!-- Add other employment history fields with similar validation messages -->
-      <button type="button" (click)="removeEmploymentHistory(i)" class="remove-button">Remove</button>
+    <div *ngFor="let employment of employmentHistory.controls; let i = index" [formGroupName]="i" class="form-subsection">
+      <label for="companyName">Company Name:</label>
+      <input type="text" formControlName="companyName">
+      <div *ngIf="employment.get('companyName')?.invalid && (employment.get('companyName')?.dirty || employment.get('companyName')?.touched)" class="error-message">Company Name is required.</div>
+  
+      <label for="jobTitle">Job Title:</label>
+      <input type="text" formControlName="jobTitle">
+      <div *ngIf="employment.get('jobTitle')?.invalid && (employment.get('jobTitle')?.dirty || employment.get('jobTitle')?.touched)" class="error-message">Job Title is required.</div>
+  
+      <label for="responsibilities">Responsibilities:</label>
+      <textarea formControlName="responsibilities"></textarea>
+      <div *ngIf="employment.get('responsibilities')?.invalid && (employment.get('responsibilities')?.dirty || employment.get('responsibilities')?.touched)" class="error-message">Responsibilities are required.</div>
+  
+      <label for="reasonForLeaving">Reason for Leaving:</label>
+      <textarea formControlName="reasonForLeaving"></textarea>
+      <button type="button" (click)="removeEmploymentHistory(i)" class="remove-btn">Remove</button>
     </div>
+    <button type="button" (click)="addEmploymentHistory()">Add Employment</button>
   </div>
+  
 
-  <!-- Education History Section -->
+  <!-- Education History -->
   <div class="form-section" formArrayName="educationHistory">
     <h2>Education History</h2>
-    <button type="button" (click)="addEducationHistory()" class="add-more">Add Education History</button>
-    <div *ngFor="let education of jobApplicationForm.get('educationHistory').controls; let i=index" [formGroupName]="i">
-      <div class="input-group">
-        <label for="institution">Institution</label>
-        <input formControlName="institution" id="institution" type="text" placeholder="Institution">
-        <div *ngIf="education.get('institution').errors?.['required']" class="error">Institution is required</div>
-      </div>
-      <!-- Add other education history fields with similar validation messages -->
-      <button type="button" (click)="removeEducationHistory(i)" class="remove-button">Remove</button>
+    <div *ngFor="let education of educationHistory.controls; let i = index" [formGroupName]="i" class="form-subsection">
+      <label for="institution">Institution:</label>
+      <input type="text" formControlName="institution">
+      <div *ngIf="education.get('institution')?.invalid && (education.get('institution')?.dirty || education.get('institution')?.touched)" class="error-message">Institution is required.</div>
+  
+      <label for="degree">Certification:</label>
+      <input type="text" formControlName="degree">
+      <div *ngIf="education.get('degree')?.invalid && (education.get('degree')?.dirty || education.get('degree')?.touched)" class="error-message">Degree is required.</div>
+  
+      <label for="fieldOfStudy">Field of Study:</label>
+      <input type="text" formControlName="fieldOfStudy">
+      <div *ngIf="education.get('fieldOfStudy')?.invalid && (education.get('fieldOfStudy')?.dirty || education.get('fieldOfStudy')?.touched)" class="error-message">Field of Study is required.</div>
+      <button type="button" (click)="removeEducationHistory(i)" class="remove-btn">Remove</button>
     </div>
+    <button type="button" (click)="addEducationHistory()">Add Education</button>
+  </div>
+  
+  <!-- Skills -->
+  <div class="form-section" formArrayName="skills">
+    <h2>Skills</h2>
+    <div *ngFor="let skill of skills.controls; let i = index" class="form-subsection">
+      <input type="text" [formControlName]="i">
+      <div *ngIf="skills.at(i).invalid && (skills.at(i).dirty || skills.at(i).touched)" class="error-message">Skill is required.</div>
+      <button type="button" (click)="removeSkill(i)">Remove</button>
+    </div>
+    <button type="button" (click)="addSkill()">Add Skill</button>
   </div>
 
-  <!-- User Skills Section -->
-  <div class="form-section" formArrayName="userSkills">
-    <h2>User Skills</h2>
-    <button type="button" (click)="addSkill()" class="add-more">Add Skill</button>
-    <div *ngFor="let skill of jobApplicationForm.get('userSkills').controls; let j=index" class="skill-item">
-      <input [formControlName]="j" placeholder="Skill">
-      <div *ngIf="skill.errors?.['required']" class="error">Skill is required</div>
-      <button type="button" (click)="removeSkill(j)" class="remove-button">Remove</button>
-    </div>
+  <!-- Resume Upload within the form -->
+  <div class="form-section">
+    <h2>Resume/CV Upload</h2>
+    <input type="file" (change)="onFileSelected($event)" id="resumeUpload" accept=".pdf,.doc,.docx">
+    <label for="resumeUpload" class="upload-label">Choose file...</label>
+    <div *ngIf="fileName" class="file-name">{{ fileName }}</div>
+    <div *ngIf="fileError" class="error-message">{{ fileError }}</div>
   </div>
 
-  <div class="form-button-group">
-    <button type="submit" class="submit-button">Submit Application</button>
-  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" class="submit-btn" (click)="applyJob()">Submit</button>
 </form>

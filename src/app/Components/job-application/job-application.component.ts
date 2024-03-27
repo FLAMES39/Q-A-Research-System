@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../states/appState';
 import * as JobActions from '../../states/Actions/JobActions';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Component,OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-job-application',
@@ -15,81 +15,134 @@ import { RouterModule } from '@angular/router';
 })
 export class JobApplicationComponent implements OnInit {
   jobApplicationForm!: FormGroup;
-
+  fileName: string = ''; 
+  fileError:string = ''
   constructor(private fb: FormBuilder, private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.jobApplicationForm = this.fb.group({
-      personalDetails: this.initPersonalDetails(),
-      employmentHistory: this.fb.array([this.initEmploymentHistory()]),
-      educationHistory: this.fb.array([this.initEducationHistory()]),
-      userSkills: this.fb.array([this.initSkills()])
+    
+        Name: ['', Validators.required],
+        Email: ['', [Validators.required, Validators.email]],
+        contactInfo: ['', [Validators.required]],
+      
+      employmentHistory: this.fb.array([]),
+      educationHistory: this.fb.array([]),
+      skills: this.fb.array([]),
+      resume:['null',[Validators.required]]
     });
   }
 
-  initPersonalDetails(): FormGroup {
-    return this.fb.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.email, Validators.required]],
-      phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      address: ['', [Validators.required]]
-    });
+  get employmentHistory(): FormArray {
+    return this.jobApplicationForm.get('employmentHistory') as FormArray;
   }
 
-  initEmploymentHistory(): FormGroup {
-    return this.fb.group({
-      companyName: ['', [Validators.required]],
-      jobTitle: ['', [Validators.required]],
-      responsibilities: ['', [Validators.required]],
-      reasonForLeaving: ['']
-    });
+  get educationHistory(): FormArray {
+    return this.jobApplicationForm.get('educationHistory') as FormArray;
   }
 
-  initEducationHistory(): FormGroup {
-    return this.fb.group({
-      institution: ['', [Validators.required]],
-      degree: ['', [Validators.required]],
-      fieldOfStudy: ['', [Validators.required]]
-    });
-  }
-
-  initSkills(): FormControl {
-    return this.fb.control('', [Validators.required]);
-  }
-
-  addSkill() {
-    const control = <FormArray>this.jobApplicationForm.get('userSkills');
-    control.push(this.initSkills());
-  }
-
-  removeSkill(index: number) {
-    const control = <FormArray>this.jobApplicationForm.get('userSkills');
-    control.removeAt(index);
-  }
-
-  addEmploymentHistory() {
-    const control = <FormArray>this.jobApplicationForm.get('employmentHistory');
-    control.push(this.initEmploymentHistory());
+  get skills(): FormArray {
+    return this.jobApplicationForm.get('skills') as FormArray;
   }
 
   removeEmploymentHistory(index: number) {
-    const control = <FormArray>this.jobApplicationForm.get('employmentHistory');
-    control.removeAt(index);
+    this.employmentHistory.removeAt(index);
+  }
+  
+  removeEducationHistory(index: number) {
+    this.educationHistory.removeAt(index);
+  }
+  
+  addEmploymentHistory() {
+    const employmentGroup = this.fb.group({
+      companyName: ['', Validators.required],
+      jobTitle: ['', Validators.required],
+      responsibilities: ['', Validators.required],
+      reasonForLeaving: ['']
+    });
+    this.employmentHistory.push(employmentGroup);
   }
 
   addEducationHistory() {
-    const control = <FormArray>this.jobApplicationForm.get('educationHistory');
-    control.push(this.initEducationHistory());
+    const educationGroup = this.fb.group({
+      institution: ['', Validators.required],
+      degree: ['', Validators.required],
+      fieldOfStudy: ['', Validators.required]
+    });
+    this.educationHistory.push(educationGroup);
   }
 
-  removeEducationHistory(index: number) {
-    const control = <FormArray>this.jobApplicationForm.get('educationHistory');
-    control.removeAt(index);
+  addSkill() {
+    const skillControl = this.fb.control('', Validators.required);
+    this.skills.push(skillControl);
   }
 
-  onSubmit() {
-    if (this.jobApplicationForm.valid) {
-      this.store.dispatch(JobActions.applyJob({ applyJob: this.jobApplicationForm.value }));
+  removeSkill(index: number) {
+    this.skills.removeAt(index);
+  }
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+  
+    if (input && input.files && input.files.length) {
+      const file: File = input.files[0];
+  
+      if (file.size > 1048576) { 
+        this.fileError = 'File size should not exceed 1MB';
+        this.fileName = '';
+      } else {
+        this.fileName = file.name;
+        this.fileError = '';
+  
+        // Set the file into the form control
+        this.jobApplicationForm.get('resume')!.setValue(file);
+
+      }
     }
   }
+  
+  applyJob() {
+    if (this.jobApplicationForm.valid) {
+      const formData = new FormData();
+      Object.entries(this.jobApplicationForm.value).forEach(([key, value]: [string, any]) => {
+        if (key === 'resume') {
+          formData.append(key, value, value.name);
+        } else {
+          formData.append(key, value);
+        }
+      });
+  
+      this.store.dispatch(JobActions.applyJob({applyJob:this.jobApplicationForm.value}))
+      console.log(this.jobApplicationForm.value);
+    } else {
+      this.jobApplicationForm.markAllAsTouched();
+    }
+  }
+  
+
+
+  prepopulate(){
+    this.jobApplicationForm.setValue({
+
+      Name:'christian abiodun',
+      Email:'christian@gmail.com',
+      contactinfo:'12dwWE$fyybve23',
+ 
+    })
+  }
+  prepopulate1(){
+    this.jobApplicationForm.patchValue({
+      personalDetails:{
+        Name:'Barmidele Sunmonu abiodun',
+        Email:'christian@gmail.com'
+      },
+    })
+  }
+  onSubmit(){
+
+  }
+
+
+
+ 
+
 }
