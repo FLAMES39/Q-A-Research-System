@@ -25,7 +25,7 @@ export const addJob=createAction('[addJob]-addJob',props<{newJob:newJobPost}>())
 export const AddJobSuccess=createAction('[addJobsSuccess]-addJobSuccess',props<{message:string}>())
 export const AddJobFailure=createAction('[AddCoursesFailure]-addJobFailure',props<{message:string}>())
 
-export const applyJob=createAction('[applyJob]-applyJob',props<{formData:FormData}>())
+export const applyJob=createAction('[applyJob]-applyJob',props<{JobID:number, formData:FormData }>())
 export const applyJobSuccess=createAction('[applyJobSuccess]-applyJobSuccess',props<{message:string}>())
 export const applyJobFailure=createAction('[applyJobFailure]-applyJobFailure',props<{message:string}>())
 

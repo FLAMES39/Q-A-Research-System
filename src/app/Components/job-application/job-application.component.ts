@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../states/appState';
 import * as JobActions from '../../states/Actions/JobActions';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Component,OnInit } from '@angular/core';
 
 @Component({
@@ -17,21 +17,37 @@ export class JobApplicationComponent implements OnInit {
   jobApplicationForm!: FormGroup;
   fileName: string = ''; 
   fileError:string = ''
-  constructor(private fb: FormBuilder, private store: Store<AppState>) {}
+  constructor(private fb: FormBuilder, private store: Store<AppState>, private route:ActivatedRoute, private router:Router) {}
 
+
+  currentJobId!: number;
   ngOnInit(): void {
+    const JobID = +this.route.snapshot.params['JobID'];
+    if (!isNaN(JobID) && JobID > 0) {
+      this.currentJobId = JobID;
+      this.initializeForm();
+    } else {
+      console.error('Invalid Job ID:', JobID);
+      this.router.navigate(['/']); // Redirect if jobId is invalid
+    }
+  }
+  
+  
+  initializeForm(): void {
     this.jobApplicationForm = this.fb.group({
-    
-        Name: ['', Validators.required],
-        Email: ['', [Validators.required, Validators.email]],
-        contactInfo: ['', [Validators.required]],
-      
+      Name: ['', Validators.required],
+      Email: ['', [Validators.required, Validators.email]],
+      contactInfo: ['', [Validators.required]],
       employmentHistory: this.fb.array([]),
       educationHistory: this.fb.array([]),
       skills: this.fb.array([]),
-      resume:['null',[Validators.required]]
+      resume: ['', [Validators.required]]  // Assume 'resume' is a required field
     });
   }
+
+
+
+  
 
   get employmentHistory(): FormArray {
     return this.jobApplicationForm.get('employmentHistory') as FormArray;
@@ -101,28 +117,23 @@ export class JobApplicationComponent implements OnInit {
   }
   
   applyJob() {
-    if (this.jobApplicationForm.valid) {
+    if (this.currentJobId && this.jobApplicationForm.valid) {
       const formData = new FormData();
       Object.entries(this.jobApplicationForm.value).forEach(([key, value]: [string, any]) => {
         if (key === 'employmentHistory' || key === 'educationHistory' || key === 'skills') {
-          // Convert array of objects to a JSON string and append
           formData.append(key, JSON.stringify(value));
         } else if (key === 'resume' && value) {
-          // Append the file with its name for the 'resume' key
           formData.append(key, value, value.name);
         } else {
-          // Append other non-array and non-file form fields as normal
           formData.append(key, value);
         }
       });
-  
-      // Dispatch the action with formData
-      this.store.dispatch(JobActions.applyJob({ formData }));
+
+      this.store.dispatch(JobActions.applyJob({ formData, JobID: this.currentJobId }));
     } else {
       this.jobApplicationForm.markAllAsTouched();
     }
   }
-  
   
   
 

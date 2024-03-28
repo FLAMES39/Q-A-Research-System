@@ -22,8 +22,8 @@ export class SingleJobComponent implements OnInit{
     this.route.params.subscribe( (j:Params)=>{
       this.store.dispatch(jobAction.Getjobs())
       this.store.dispatch(jobAction.GetJobByIdSuccess({jobs:j['jobs']}))
-      let jobID = j['jobID']
-      this.job=this.jobService.getJobsById(j['jobID'])
+      let jobID = j['JobID']
+      this.job=this.jobService.getJobsById(j['JobID'])
     })
     
   }
