@@ -60,7 +60,7 @@ export class jobEffects {
         return this.action$.pipe(
             ofType(JobsAction.applyJob),
             mergeMap( action =>{
-                return this.jobservice.applyJob( action.applyJob).pipe(
+                return this.jobservice.applyJob( action.formData).pipe(
                     map( msg => JobsAction.applyJobSuccess({message:msg.message})),
                     catchError(error => of(JobsAction.applyJobFailure({message:error})))
                 )

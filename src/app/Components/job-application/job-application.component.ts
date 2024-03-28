@@ -104,19 +104,26 @@ export class JobApplicationComponent implements OnInit {
     if (this.jobApplicationForm.valid) {
       const formData = new FormData();
       Object.entries(this.jobApplicationForm.value).forEach(([key, value]: [string, any]) => {
-        if (key === 'resume') {
+        if (key === 'employmentHistory' || key === 'educationHistory' || key === 'skills') {
+          // Convert array of objects to a JSON string and append
+          formData.append(key, JSON.stringify(value));
+        } else if (key === 'resume' && value) {
+          // Append the file with its name for the 'resume' key
           formData.append(key, value, value.name);
         } else {
+          // Append other non-array and non-file form fields as normal
           formData.append(key, value);
         }
       });
   
-      this.store.dispatch(JobActions.applyJob({applyJob:this.jobApplicationForm.value}))
-      console.log(this.jobApplicationForm.value);
+      // Dispatch the action with formData
+      this.store.dispatch(JobActions.applyJob({ formData }));
     } else {
       this.jobApplicationForm.markAllAsTouched();
     }
   }
+  
+  
   
 
 
@@ -129,6 +136,9 @@ export class JobApplicationComponent implements OnInit {
  
     })
   }
+
+
+  
   prepopulate1(){
     this.jobApplicationForm.patchValue({
       personalDetails:{

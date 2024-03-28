@@ -20,7 +20,7 @@ export class JobsService {
   getJobsById(JobID:number):Observable<jobs>{
     return this.http.get<jobs>(`http://localhost:4000/jobs/${JobID}`)
   }
-  applyJob(applyJob:jobs):Observable<jobAppliedSuccessful>{
+  applyJob(applyJob:FormData):Observable<jobAppliedSuccessful>{
     return this.http.post<jobAppliedSuccessful>('http://localhost:4000/apply',applyJob)
   }
   getJobsByLocation(location:string):Observable<jobs>{

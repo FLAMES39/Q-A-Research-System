@@ -1,0 +1,61 @@
+/* company.component.css */
+
+.company-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .company-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .company-header h1 {
+    font-size: 2.5em;
+    color: #333;
+  }
+  
+  .company-header h1 span {
+    color: #007bff;
+  }
+  
+  .company-navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .company-navbar ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  .company-navbar ul li a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1.2em;
+  }
+  
+  .company-navbar ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .company-content {
+    margin-top: 20px;
+  }
+  
+  .company-footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #666;
+  }
+  
+  .active {
+    font-weight: bold;
+  }
+  

@@ -19,7 +19,7 @@
     
                 <div class="form-group">
                     <label for="Description">Description:</label>
-                    <input type="text" id="Description" formControlName="Description" placeholder="Describe your company">
+                    <textarea id="Description" formControlName="Description" placeholder="Describe your company"></textarea>
                     <div *ngIf="!form.get('Description')?.valid && form.get('Description')?.touched" class="error-message">
                         Description is required
                     </div>
