@@ -5,6 +5,7 @@ import * as JobActions from '../../states/Actions/JobActions';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Component,OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-job-application',
@@ -17,11 +18,12 @@ export class JobApplicationComponent implements OnInit {
   jobApplicationForm!: FormGroup;
   fileName: string = ''; 
   fileError:string = ''
-  constructor(private fb: FormBuilder, private store: Store<AppState>, private route:ActivatedRoute, private router:Router) {}
+  constructor(private fb: FormBuilder, private store: Store<AppState>, private route:ActivatedRoute, private router:Router, private authservice:AuthService) {}
 
-
+  UserID!:string 
   currentJobId!: number;
   ngOnInit(): void {
+    this.UserID =  this.authservice.getUserID() || ''
     const JobID = +this.route.snapshot.params['JobID'];
     if (!isNaN(JobID) && JobID > 0) {
       this.currentJobId = JobID;
@@ -37,11 +39,13 @@ export class JobApplicationComponent implements OnInit {
     this.jobApplicationForm = this.fb.group({
       Name: ['', Validators.required],
       Email: ['', [Validators.required, Validators.email]],
+      JobTitle:['', [Validators.required]],
       contactInfo: ['', [Validators.required]],
       employmentHistory: this.fb.array([]),
       educationHistory: this.fb.array([]),
       skills: this.fb.array([]),
-      resume: ['', [Validators.required]]  // Assume 'resume' is a required field
+      ResumePath: ['', [Validators.required]], 
+      UserID:this.UserID
     });
   }
 
@@ -71,19 +75,19 @@ export class JobApplicationComponent implements OnInit {
   
   addEmploymentHistory() {
     const employmentGroup = this.fb.group({
-      companyName: ['', Validators.required],
-      jobTitle: ['', Validators.required],
-      responsibilities: ['', Validators.required],
-      reasonForLeaving: ['']
+      CompanyName: ['', Validators.required],
+      JobTitle: ['', Validators.required],
+      Responsibilities: ['', Validators.required],
+      ReasonForLeaving: ['']
     });
     this.employmentHistory.push(employmentGroup);
   }
 
   addEducationHistory() {
     const educationGroup = this.fb.group({
-      institution: ['', Validators.required],
-      degree: ['', Validators.required],
-      fieldOfStudy: ['', Validators.required]
+      Institution: ['', Validators.required],
+      Degree: ['', Validators.required],
+      FieldOfStudy: ['', Validators.required]
     });
     this.educationHistory.push(educationGroup);
   }
@@ -110,7 +114,7 @@ export class JobApplicationComponent implements OnInit {
         this.fileError = '';
   
         // Set the file into the form control
-        this.jobApplicationForm.get('resume')!.setValue(file);
+        this.jobApplicationForm.get('ResumePath')!.setValue(file);
 
       }
     }
@@ -129,7 +133,10 @@ export class JobApplicationComponent implements OnInit {
         }
       });
 
-      this.store.dispatch(JobActions.applyJob({ formData, JobID: this.currentJobId }));
+      this.store.dispatch(JobActions.applyJob({ formData, JobID: this.currentJobId}));
+      this.router.navigate(['/jobs'])
+   
+      
     } else {
       this.jobApplicationForm.markAllAsTouched();
     }

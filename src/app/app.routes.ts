@@ -13,13 +13,14 @@ export const routes: Routes = [
     {path:'allJobs',loadComponent: ()=>import ('../app/Components/all-jobs/all-jobs.component').then(a=>a.AllJobsComponent)},
     {path:'single/:JobID',loadComponent:()=>import('../app/Components/single-job/single-job.component').then(s=>s.SingleJobComponent)},
     {path:'compLog', loadComponent: ()=>import('../app/Components/Campanies/company-login/company-login.component').then(cl=>cl.CompanyLoginComponent)},
+    // {path: 'tracking',loadComponent:()=>import('./Components/Campanies/dashboard/applicant-tracking/applicant-tracking.component').then(t=>t.ApplicantTrackingComponent)},
     {path:'compReg', loadComponent:()=>import('../app/Components/Campanies/company-register/company-register.component').then(cr=>cr.CompanyRegisterComponent)},
     {path:'dashboard' , loadComponent: ()=>import('../app/Components/Campanies/dashboard/dashboard.component').then(d=>d.DashboardComponent),
     
         children:[
             {path:'posting',loadComponent: ()=> import('../app/Components/Campanies/job-postings/job-postings.component').then(jp=>jp.JobPostingsComponent)},
-            {path: 'tracking',loadComponent:()=>import('../app/Components/Campanies/applicant-tracking/applicant-tracking.component').then(t=>t.ApplicantTrackingComponent)},
-            {path: 'analytics',loadComponent:()=>import('../app/Components/Campanies/analytics/analytics.component').then(an=>an.AnalyticsComponent)},
+             {path: 'tracking',loadComponent:()=>import('../app/Components/Campanies/applicant-tracking/applicant-tracking.component').then(t=>t.ApplicantTrackingComponent)},
+            {path: 'analytics',loadComponent:()=>import('./Components/Campanies/analytics/analytics.component').then(an=>an.AnalyticsComponent)},
             { path: '', redirectTo: 'job-postings', pathMatch: 'full' }
         ]
     },

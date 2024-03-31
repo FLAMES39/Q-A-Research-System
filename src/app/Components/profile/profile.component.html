@@ -1,39 +1,45 @@
-<article class="user-profile">
-    <section class="profile-header" >
-      <div class="profile-picture-wrapper">
-        <img src="https://secure.gravatar.com/avatar/b9a6a966ae54d4c1c74655210aa820f4?s=35&d=mm"  class="profile-picture">
+<!-- profile.component.html -->
+<div class="profile-container">
+  <div class="profile-header">
+      <h2>Edit Profile</h2>
+  </div>
+  <div class="profile-picture">
+      <img src="assets/profile-placeholder.png" alt="Profile Picture">
+      <button class="upload-button">Upload new photo</button>
+      <p class="image-recommendation">At least 800x800 px recommended. JPG or PNG is allowed.</p>
+  </div>
+  <div class="personal-info">
+      <div class="info-section">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" value="John Doe">
       </div>
-      <div class="user-info" *ngIf="user | async as users">
-        <h1 class="user-name">{{users.Name}}</h1>
-        <p class="user-title">Frontend Developer</p>
+      <div class="info-section">
+          <label for="email">Email</label>
+          <input type="email" id="email" value="john.doe@example.com">
       </div>
-    </section>
-    
-    <section class="contact-info" *ngIf="user | async as users">
-      <h2>Contact Information</h2>
-      <p><strong>Email:</strong> {{users.Email}}</p>
-      <p><strong>Phone:</strong> +123456789</p>
-      <p><strong>Location:</strong> New York, NY</p>
-    </section>
-    
-    <section class="skills">
-      <h2>Skills</h2>
-      <ul class="skills-list">
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <!-- Additional skills -->
+      <div class="info-section">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" value="123-456-7890">
+      </div>
+      <div class="info-section">
+          <label for="location">Location</label>
+          <input type="text" id="location" value="Anytown, USA">
+      </div>
+      <button class="save-button">Save changes</button>
+  </div>
+  <div class="profile-bio">
+      <h3>Bio</h3>
+      <textarea id="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
+  </div>
+  <div class="profile-skills">
+      <h3>Skills</h3>
+      <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>Angular</li>
+          <!-- Add more static skills as list items here -->
       </ul>
-    </section>
-    
-    <section class="bio" *ngIf="user | async as users">
-      <h2>About Me</h2>
-      <p>{{users.bio}}</p>
-    </section>
-    
-    <section class="resume"  *ngIf="user | async as users">
-      <h2>{{users.bio}}</h2>
-      <a href="path/to/resume.pdf" target="_blank" class="resume-link">Download My Resume</a>
-    </section>
-  </article>
-  
+      <input type="text">
+      <button>Add Skill</button>
+  </div>
+</div>

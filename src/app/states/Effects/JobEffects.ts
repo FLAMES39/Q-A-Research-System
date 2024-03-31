@@ -64,7 +64,8 @@ export class jobEffects {
                     map( msg => JobsAction.applyJobSuccess({message:msg.message})),
                     catchError(error => of(JobsAction.applyJobFailure({message:error})))
                 )
-            })
+            }),
+            // switchMap( ()=>[JobsAction.Getjobs()])
         )
         })
     getJobByLocation$ = createEffect( ()=>{
@@ -114,6 +115,19 @@ export class jobEffects {
                         return JobsAction.updatedJobPostSuccess({message:msg.message})
                     }),
                     catchError( error => of(JobsAction.updatedJobPostFailure({message:error})))
+                )
+            })
+        )
+    })
+    getApplication$ = createEffect( ()=>{
+        return this.action$.pipe(
+            ofType(JobsAction.GetAllApplications),
+            mergeMap( action =>{
+                return this.jobservice.getApplications().pipe(
+                    map( applications => {
+                        return JobsAction.GetAllApplicationsSuccess({ applications})
+                    }),
+                    catchError(error => of(JobsAction.GetAllApplicationsFailure({message:error})))
                 )
             })
         )

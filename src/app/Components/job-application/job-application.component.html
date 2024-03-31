@@ -12,7 +12,11 @@
     
     <label for="contactInfo">contactInfo:</label>
     <input type="text" formControlName="contactInfo" id="contactInfo">
-    <div *ngIf="jobApplicationForm.get('contactInfo')?.invalid && (jobApplicationForm.get('contactInfo')?.dirty || jobApplicationForm.get('contactInfo')?.touched)" class="error-message">ContactInfo is required.</div>
+    <div *ngIf="jobApplicationForm.get('contactInfo')?.invalid && (jobApplicationForm.get('contactInfo')?.dirty || jobApplicationForm.get('JobTitle')?.touched)" class="error-message">ContactInfo is required.</div>
+
+    <label for="JobTitle">JobTitle:</label>
+    <input type="text" formControlName="JobTitle" id="JobTitle">
+    <div *ngIf="jobApplicationForm.get('JobTitle')?.invalid && (jobApplicationForm.get('JobTitle')?.dirty || jobApplicationForm.get('JobTitle')?.touched)" class="error-message">ContactInfo is required.</div>
 
   </div>
 
@@ -20,20 +24,20 @@
   <div class="form-section" formArrayName="employmentHistory">
     <h2>Employment History</h2>
     <div *ngFor="let employment of employmentHistory.controls; let i = index" [formGroupName]="i" class="form-subsection">
-      <label for="companyName">Company Name:</label>
-      <input type="text" formControlName="companyName">
-      <div *ngIf="employment.get('companyName')?.invalid && (employment.get('companyName')?.dirty || employment.get('companyName')?.touched)" class="error-message">Company Name is required.</div>
+      <label for="CompanyName">Company Name:</label>
+      <input type="text" formControlName="CompanyName">
+      <div *ngIf="employment.get('CompanyName')?.invalid && (employment.get('CompanyName')?.dirty || employment.get('CompanyName')?.touched)" class="error-message">Company Name is required.</div>
   
-      <label for="jobTitle">Job Title:</label>
-      <input type="text" formControlName="jobTitle">
-      <div *ngIf="employment.get('jobTitle')?.invalid && (employment.get('jobTitle')?.dirty || employment.get('jobTitle')?.touched)" class="error-message">Job Title is required.</div>
+      <label for="JobTitle">Job Title:</label>
+      <input type="text" formControlName="JobTitle">
+      <div *ngIf="employment.get('JobTitle')?.invalid && (employment.get('JobTitle')?.dirty || employment.get('JobTitle')?.touched)" class="error-message">Job Title is required.</div>
   
-      <label for="responsibilities">Responsibilities:</label>
-      <textarea formControlName="responsibilities"></textarea>
-      <div *ngIf="employment.get('responsibilities')?.invalid && (employment.get('responsibilities')?.dirty || employment.get('responsibilities')?.touched)" class="error-message">Responsibilities are required.</div>
+      <label for="Responsibilities">Responsibilities:</label>
+      <textarea formControlName="Responsibilities"></textarea>
+      <div *ngIf="employment.get('Responsibilities')?.invalid && (employment.get('Responsibilities')?.dirty || employment.get('Responsibilities')?.touched)" class="error-message">Responsibilities are required.</div>
   
-      <label for="reasonForLeaving">Reason for Leaving:</label>
-      <textarea formControlName="reasonForLeaving"></textarea>
+      <label for="ReasonForLeaving">Reason for Leaving:</label>
+      <textarea formControlName="ReasonForLeaving"></textarea>
       <button type="button" (click)="removeEmploymentHistory(i)" class="remove-btn">Remove</button>
     </div>
     <button type="button" (click)="addEmploymentHistory()">Add Employment</button>
@@ -44,17 +48,17 @@
   <div class="form-section" formArrayName="educationHistory">
     <h2>Education History</h2>
     <div *ngFor="let education of educationHistory.controls; let i = index" [formGroupName]="i" class="form-subsection">
-      <label for="institution">Institution:</label>
-      <input type="text" formControlName="institution">
-      <div *ngIf="education.get('institution')?.invalid && (education.get('institution')?.dirty || education.get('institution')?.touched)" class="error-message">Institution is required.</div>
+      <label for="Institution">Institution:</label>
+      <input type="text" formControlName="Institution">
+      <div *ngIf="education.get('Institution')?.invalid && (education.get('Institution')?.dirty || education.get('Institution')?.touched)" class="error-message">Institution is required.</div>
   
-      <label for="degree">Certification:</label>
-      <input type="text" formControlName="degree">
-      <div *ngIf="education.get('degree')?.invalid && (education.get('degree')?.dirty || education.get('degree')?.touched)" class="error-message">Degree is required.</div>
+      <label for="Degree">Certification:</label>
+      <input type="text" formControlName="Degree">
+      <div *ngIf="education.get('Degree')?.invalid && (education.get('Degree')?.dirty || education.get('Degree')?.touched)" class="error-message">Degree is required.</div>
   
-      <label for="fieldOfStudy">Field of Study:</label>
-      <input type="text" formControlName="fieldOfStudy">
-      <div *ngIf="education.get('fieldOfStudy')?.invalid && (education.get('fieldOfStudy')?.dirty || education.get('fieldOfStudy')?.touched)" class="error-message">Field of Study is required.</div>
+      <label for="FieldOfStudy">Field of Study:</label>
+      <input type="text" formControlName="FieldOfStudy">
+      <div *ngIf="education.get('FieldOfStudy')?.invalid && (education.get('FieldOfStudy')?.dirty || education.get('FieldOfStudy')?.touched)" class="error-message">Field of Study is required.</div>
       <button type="button" (click)="removeEducationHistory(i)" class="remove-btn">Remove</button>
     </div>
     <button type="button" (click)="addEducationHistory()">Add Education</button>
@@ -74,7 +78,7 @@
   <!-- Resume Upload within the form -->
   <div class="form-section">
     <h2>Resume/CV Upload</h2>
-    <input type="file" (change)="onFileSelected($event)" id="resumeUpload" accept=".pdf,.doc,.docx">
+    <input type="file" (change)="onFileSelected($event)" id="ResumePath" accept=".pdf,.doc,.docx" formControlName="ResumePath" >
     <label for="resumeUpload" class="upload-label">Choose file...</label>
     <div *ngIf="fileName" class="file-name">{{ fileName }}</div>
     <div *ngIf="fileError" class="error-message">{{ fileError }}</div>

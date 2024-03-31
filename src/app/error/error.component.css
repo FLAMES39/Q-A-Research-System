@@ -1,0 +1,33 @@
+.body{
+
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+     z-index: 50px; 
+    background-image: url(https://w3-lab.com/wp-content/uploads/2022/09/FOR-WEB-404-astronaut-770x444.jpg);
+    background-size: cover;
+
+}
+.alert-box{
+    position: absolute;
+    top:40vh;
+    left: 30vw;
+    width: 30vw;
+    padding: 16px;
+    z-index: 100;
+    background: white;
+    box-shadow: lightblue;
+    
+}
+.btn{
+  text-align: end ;
+}
+button{
+    background: blue;
+    color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}

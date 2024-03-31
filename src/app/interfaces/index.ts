@@ -31,7 +31,7 @@ export interface Loggedusers {
 }
 
 export interface loggedUserSuccess{
-    UserID:number
+    UserID:string
     role:string
     token:string
     Name:string
@@ -69,10 +69,12 @@ export interface addedSuccessfull{
 export interface iApplication{
     ApplicationID:number
     JobID:number
+    JobTitle:string
+    Name:string
     UserID:number
     ApplicationDate:Date
     Status:"Applied" | "Not Applied"
-    CoverLetter:string
+    resume:string
 }
 
 

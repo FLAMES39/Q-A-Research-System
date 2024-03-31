@@ -52,7 +52,7 @@
                 <p>Please send your resume and a cover letter to careerstechinnovations.com.</p>
             </div>
         </div>
-        <div class="proceed">
+        <div class="proceed" *ngIf="this.job | async as jb">
             <!-- <a href="/apply" class="apply-button">Apply Now</a> -->
             <button class="learn-more-button" type="submit" (click)="applyJob(jb.JobID)">Apply Now</button>
             <button class="learn-more-button">Learn More</button>

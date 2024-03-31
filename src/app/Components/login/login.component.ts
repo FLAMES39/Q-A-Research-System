@@ -16,6 +16,7 @@ import { userLoggedinSuccess } from '../../states/Reducers/userReducer';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
+
 export class LoginComponent implements OnInit{
   constructor( private Router:Router , private fb:FormBuilder ,private store:Store<AppState>, private userservice:UserService){
 
@@ -29,8 +30,7 @@ export class LoginComponent implements OnInit{
       
         Email:['',[Validators.required,Validators.email]],
         Password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9]{3,30}$')]]
-      
-      
+ 
     })
   }
 

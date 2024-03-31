@@ -27,7 +27,7 @@ export class AllJobsComponent implements OnInit{
   ngOnInit(): void {
   console.log(  this.jobs=this.store.select(getAllJobs)
   );
-  
+   this.jobs =this.store.select(getAllJobs)
    this.store.dispatch(jobsAction.Getjobs());
   }
 

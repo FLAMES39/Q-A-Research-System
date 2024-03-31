@@ -1,36 +1,38 @@
-<h2>Applicant Tracking</h2>
+<div *ngIf="applications | async as applicationsList; else noApplication">
+    <h2>Applicant Tracking</h2>
     <div class="filter-section">
-      <label for="filterJob">Filter by Job:</label>
-      <select id="filterJob">
-        <option value="all">All Jobs</option>
-        <!-- Dynamically load options here based on the right #id -->
-        <!-- to be removed -->
-        <option value="sde1">Frontend Angular</option>
-        <option value="sde2">Backend NodeJs</option>
-</select>
+        <label for="filterJob">Filter by Job:</label>
+        <select id="filterJob">
+            <option value="all">All Jobs</option>
+            <!-- Dynamically load job options here -->
+        </select>
     </div>
-    <table class="applicants-table">
-        <thead>
-            <tr>
-                <th>Applicant Name</th>
-<th>Job Title</th>
-          <th>Application Date</th>
-          <th>Status</th>
-          <th>Actions</th>
-</tr>
-        </thead>
-        <tbody>
-            <!-- Dynamically load applicants here -->
-            <tr>
-<td>Christian</td>
-                <td>Software Developer</td>
-                <td>Jan 1, 2024</td>
-                <td>Reviewed</td>
-
-                <td> <button class="btn-view">View</button>
-                    <button class="btn-contact">Contact</button>
-</td>
-        </tr>
-        <!-- Repeat for each applicant -->
-    </tbody>
-</table>
+    <div *ngFor="let application of applicationsList">
+        <table class="applicants-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Job Title</th>
+                    <th>Application Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{application.Name}}</td> 
+                    <td>{{application.JobTitle}}</td>
+                    <td>{{application.ApplicationDate}}</td>
+                    <td>{{application.Status}}</td>
+                    <td>
+                        <button class="btn-view">View</button>
+                        <button class="btn-contact">Contact</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<ng-template #noApplication>
+    NO APPLICATIONS AVAILABLE
+</ng-template>

@@ -2,7 +2,7 @@
   <div class="navbar">
    
     <div class="navleft">
-      <a routerLink="/company" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Applly Job</a>
+      <a routerLink="/tracking" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Applly Job</a>
       <a href="http://localhost:57050/">Query Help</a>
       <a routerLink="/jobs" routerLinkActive="active">Home</a>
       <a routerLink="/compReg" routerLinkActive="active" >Company</a>
@@ -31,9 +31,12 @@
   </div>
   
   
-
+<button (click)="showError()">ShowError</button>
   <router-outlet></router-outlet>
-  
+
+  <ng-template appError>
+
+  </ng-template>
 
 
 

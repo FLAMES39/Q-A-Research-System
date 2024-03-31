@@ -13,7 +13,7 @@ export class AuthService {
   role!:string | null
   token!:string | null 
   Name!:string | null
-  UserID!:number 
+  UserID!:string 
 
   logOut(){
     if(isPlatformBrowser(this.platiformId)){
@@ -26,8 +26,19 @@ export class AuthService {
       localStorage.setItem('role', res.role)
       localStorage.setItem('token', res.token)
       localStorage.setItem('Name', res.Name)
+      localStorage.setItem('UserID', res.UserID)
       
     }
+  }
+
+
+  getUserID(){
+    if (isPlatformBrowser(this.platiformId)) {
+     const userID = localStorage.getItem('UserID')
+     return userID
+      
+    }
+    return;
   }
   
   CompanyloggedIn(res:companyLoggedSuccess){

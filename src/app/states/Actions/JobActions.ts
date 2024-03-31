@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store"
-import {   jobs,  newJobPost } from "../../interfaces"
+import {   iApplication, jobs,  newJobPost } from "../../interfaces"
 
 
 
@@ -25,9 +25,15 @@ export const addJob=createAction('[addJob]-addJob',props<{newJob:newJobPost}>())
 export const AddJobSuccess=createAction('[addJobsSuccess]-addJobSuccess',props<{message:string}>())
 export const AddJobFailure=createAction('[AddCoursesFailure]-addJobFailure',props<{message:string}>())
 
-export const applyJob=createAction('[applyJob]-applyJob',props<{JobID:number, formData:FormData }>())
+export const applyJob=createAction('[applyJob]-applyJob',props<{formData:FormData,JobID:number  }>())
 export const applyJobSuccess=createAction('[applyJobSuccess]-applyJobSuccess',props<{message:string}>())
 export const applyJobFailure=createAction('[applyJobFailure]-applyJobFailure',props<{message:string}>())
+
+
+export const GetAllApplications=createAction('[GetAllApplications]-GetAllApplications')
+export const GetAllApplicationsSuccess=createAction('[GetAllApplicationsSuccess]-GetAllApplicationsSuccess',props<{applications:iApplication[]}>())
+export const GetAllApplicationsFailure=createAction('[GetAllApplicationsFailure]-GetAllApplicationsFailure',props<{message:string}>())
+
 
 
 export const GetJobByLocation = createAction('[GetJobByLocation]-GetJobByLocation',props<{location:string}>())
@@ -48,3 +54,4 @@ export const WithdrawApplicationFailure=createAction('[WithdrawApplicationFailur
 
 
 export const GetJobById=createAction('[GetJobById]-GetJobById',props<{JobID:number}>())
+export const GetApplicationId=createAction('[GetJobById]-GetJobById',props<{ApplicationID:number}>())
