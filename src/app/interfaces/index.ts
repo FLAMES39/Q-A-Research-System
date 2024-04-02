@@ -121,7 +121,12 @@ export interface jobDeletedSuccessful{
 export interface jobWithdrwanSuccessful{
     message:string
 }
-
+export interface userDeletedSuccess{
+    message:string
+}
+export interface jobDeletedSuccess{
+    message:string
+}
 export interface newJobPost{
 
     Title:string

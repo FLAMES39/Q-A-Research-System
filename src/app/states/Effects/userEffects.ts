@@ -64,5 +64,30 @@ export class userEffects{
             })
         )
     })
+    getUsers$ = createEffect(()=>{
+        return this.action$.pipe(
+            ofType(UserActions.getUsers),
+            mergeMap(action=>{
+                return this.userService.getUsers().pipe(
+                    map(user => {
+                        return UserActions.getUsersSuccess({user})
+                    }),
+                    catchError( error => of(UserActions.getUsersFailure({message:error})))
+                )
+            })
+        )
+    })
+    deletUser$= createEffect(()=>{
+        return this.action$.pipe(
+            ofType(UserActions.DeleteUser),
+            mergeMap(action=>{
+                return this.userService.deleteUser(action.UserID).pipe(
+                    map( msg => UserActions.DeleteUserSuccess({message:msg.message})),
+                    catchError(error => of(UserActions.DeleteUserFailure({message:error})))
+                )
+            })
+        )
+    })
 
 }
+

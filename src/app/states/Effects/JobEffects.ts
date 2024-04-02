@@ -83,9 +83,9 @@ export class jobEffects {
     })
     deleteJobPost$ = createEffect( ()=>{
         return this.action$.pipe(
-            ofType( JobsAction.updatedJobPost),
+            ofType( JobsAction.DeleteJob),
             mergeMap( action =>{
-                return this.jobservice.DeleteJobPost(action.JobID).pipe(
+                return this.jobservice.DeleteJob(action.JobID).pipe(
                     map( msg => {return JobsAction.DeleteJobSuccess({message:msg.message})}),
                     catchError( error => of(JobsAction.DeleteJobFailure({message:error})))
                 )

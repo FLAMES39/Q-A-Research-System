@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AppState } from '../../states/appState';
 import { Store } from '@ngrx/store';
 import { userRegistration } from '../../states/Actions/userActions';
@@ -11,7 +11,7 @@ import { userRegistration } from '../../states/Actions/userActions';
 @Component({
   selector: 'app-registration',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule,ReactiveFormsModule,RouterModule],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.css'
 })

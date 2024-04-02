@@ -28,7 +28,7 @@ export class AllJobsComponent implements OnInit{
   console.log(  this.jobs=this.store.select(getAllJobs)
   );
    this.jobs =this.store.select(getAllJobs)
-   this.store.dispatch(jobsAction.Getjobs());
+   this.store.dispatch(jobsAction.Getjobs({page:1,pageSize:10}));
   }
 
 

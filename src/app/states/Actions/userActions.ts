@@ -24,6 +24,10 @@ export const getUsersFailure = createAction('[userFailure]-userFailure',props<{m
 
 export const getUserID = createAction('[getUserID]-getUserID',props<{UserID:number}>())
 
+export const DeleteUser=createAction('[DeleteUser]-DeleteUser',props<{UserID:number}>())
+export const DeleteUserSuccess=createAction('[DeleteUserSuccess]-DeleteUserSuccess',props<{message:string}>())
+export const DeleteUserFailure=createAction('[DeleteUserFailure]-DeleteUserFailure',props<{message:string}>())
+
 
 
 

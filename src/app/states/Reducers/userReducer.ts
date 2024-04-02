@@ -15,6 +15,8 @@ export interface userinterface{
     getUserByIDSuccess: iusers | null 
     getUserByIDFailure: string
     UserID: number
+    DeleteUserSuccess:string
+    DeleteUserFailure:string
    
     
 }
@@ -29,7 +31,8 @@ const initialiState:userinterface={
     getUserByIDSuccess: null,
     getUserByIDFailure: "",
     UserID: 0,
-   
+    DeleteUserSuccess: "",
+    DeleteUserFailure: ""
 }
 
 const userRegisterState= createFeatureSelector<userinterface>('user')
@@ -112,6 +115,22 @@ export const userReducer = createReducer(
             ...state,
             getUsersError:action.message,
             user: []
+
+        }
+    }),
+    on(userActions.DeleteUserSuccess,(state, action):userinterface=>{
+        return{
+            ...state,
+            DeleteUserSuccess:action.message,
+            DeleteUserFailure: ''
+
+        }
+    }),
+    on(userActions.DeleteUserFailure,(state, action):userinterface=>{
+        return{
+            ...state,
+            DeleteUserFailure:action.message,
+            DeleteUserSuccess: ''
 
         }
     }),

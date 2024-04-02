@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { iApplication, jobAddedSuccessful, jobAppliedSuccessful, jobDeletedSuccessful, jobWithdrwanSuccessful, jobs, newJobPost,  updatedJobPostSuccess } from '../interfaces';
+import { iApplication, jobAddedSuccessful, jobAppliedSuccessful, jobDeletedSuccess, jobDeletedSuccessful, jobWithdrwanSuccessful, jobs, newJobPost,  updatedJobPostSuccess } from '../interfaces';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,8 +10,8 @@ export class JobsService {
 
   constructor( private http:HttpClient) { }
 
-  getJobs():Observable<jobs[]>{
-    return this.http.get<jobs[]>('http://localhost:4000/jobs')
+  getJobs(page = 1, pageSize =10):Observable<jobs[]>{
+    return this.http.get<jobs[]>('http://localhost:4000/jobs', { params: { page: page.toString(), pageSize: pageSize.toString() } })
   }
   getApplications():Observable<iApplication[]>{
     return this.http.get<iApplication[]>('http://localhost:4000/apply')
@@ -36,7 +36,11 @@ export class JobsService {
  DeleteJobPost(JobID:number):Observable<jobDeletedSuccessful>{
     return this.http.delete<jobDeletedSuccessful>(``)
   }
-  updateJobPost(JobID:number, updatedJPost:newJobPost):Observable<updatedJobPostSuccess>{
-    return this.http.put<updatedJobPostSuccess>(``, updatedJPost)
+  updateJobPost(JobID:number, updatedPost:newJobPost):Observable<updatedJobPostSuccess>{
+    return this.http.put<updatedJobPostSuccess>(``, updatedPost)
+  }
+
+  DeleteJob(JobID:number):Observable<jobDeletedSuccess>{
+    return this.http.delete<jobDeletedSuccess>(`http://localhost:4000/jobs/${JobID}`)
   }
 }

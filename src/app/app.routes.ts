@@ -15,6 +15,7 @@ export const routes: Routes = [
     {path:'compLog', loadComponent: ()=>import('../app/Components/Campanies/company-login/company-login.component').then(cl=>cl.CompanyLoginComponent)},
     // {path: 'tracking',loadComponent:()=>import('./Components/Campanies/dashboard/applicant-tracking/applicant-tracking.component').then(t=>t.ApplicantTrackingComponent)},
     {path:'compReg', loadComponent:()=>import('../app/Components/Campanies/company-register/company-register.component').then(cr=>cr.CompanyRegisterComponent)},
+    {path:'forgetPwd',loadComponent:()=> import ('../app/Components/forgot-password/forgot-password.component').then(f=>f.ForgotPasswordComponent)},
     {path:'dashboard' , loadComponent: ()=>import('../app/Components/Campanies/dashboard/dashboard.component').then(d=>d.DashboardComponent),
     
         children:[

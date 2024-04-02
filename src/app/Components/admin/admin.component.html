@@ -1,1 +1,55 @@
-<p>admin works!</p>
+<div class="main-content">
+    <div class="sidebar">
+      <div class="profile-section">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTTTwXRiposkRusGHXl4f1ZUsFCbad71VjMtZY9SpQrA&s" alt="Admin Profile" />
+        <h1><b>ADMIN</b></h1>
+      </div>
+      <div class="nav">
+        <ul>
+          <li>
+            <img src="../../../assets/icons/overview.svg" alt="Overview" /><span>Overview</span>
+          </li>
+          <li (click)="toggleShowUsers()">
+            <img src="../../../assets/icons/users.svg" alt="Users" /><span>Users</span>
+          </li>
+          <li (click)="toggleShowJobs()">
+            <img src="../../../assets/icons/projects.svg" alt="Questions" /><span>Jobs</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="body-section">
+      <div *ngIf="showJobs">
+        <div *ngIf="jobs.length > 0; else noJobs">
+          <div class="question-card" *ngFor="let job of jobs">
+            <div class="question-section">
+              <h1>{{ job.Title }}</h1>
+              <h5>{{ job.Description }}</h5>
+            </div>
+            <div class="delete-section">
+              <img src="../../../assets/icons/delete-icon.svg" alt="Delete Job" (click)="deleteJob(job.JobID)"/>
+            </div>
+          </div>
+        </div>
+        <ng-template #noJobs>
+          <p>No jobs available</p>
+        </ng-template>
+      </div>
+  
+      <div *ngIf="showUsers">
+        <div *ngIf="users.length > 0; else noUsers">
+          <div class="question-card" *ngFor="let user of users">
+            <div class="question-section">
+              <h1>{{ user.Name }}</h1>
+            </div>
+            <div class="delete-section">
+              <img src="../../../assets/icons/delete-icon.svg" alt="Delete User" (click)="deleteUser(user.UserID)"/>
+            </div>
+          </div>
+        </div>
+        <ng-template #noUsers>
+          <p>No users found</p>
+        </ng-template>
+      </div>
+    </div>
+</div>

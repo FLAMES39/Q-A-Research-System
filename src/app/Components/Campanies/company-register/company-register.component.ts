@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { AsyncValidatorFn, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../states/appState';
@@ -17,7 +17,7 @@ import {addCompany} from '../../../states/Actions/coursesActions'
   styleUrl: './company-register.component.css'
 })
 export class CompanyRegisterComponent {
-  constructor(private fb:FormBuilder, private store:Store<AppState> ,private authservice:AuthService){}
+  constructor(private fb:FormBuilder, private store:Store<AppState> ,private authservice:AuthService, private router:Router){}
   form!: FormGroup
   errorMessage=null
   unAllowedName=['Ademola','Christian','Abiodun']
@@ -27,7 +27,7 @@ export class CompanyRegisterComponent {
       Name:['',[Validators.required,this.checkUnAllowedName]],  
       Description:['',[Validators.required]],
       Industry:['',[Validators.required]],
-      Logo:['',[Validators.required]],
+      // Logo:[''],
       ContactInfo:['',[Validators.required]],
       Email:[null,[Validators.required,Validators.email],[<AsyncValidatorFn>this.checkEmail]],
       Password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9]{3,30}$')]],
@@ -61,8 +61,10 @@ onsubmit(){
 }
 
 submitForm(){
-console.log(this.form.value);
+// console.log(this.form.value);
 
 this.store.dispatch(addCompany({newCompany:this.form.value}))
+this.router.navigate(['/compLog'])
+
 }
 }

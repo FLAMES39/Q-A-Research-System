@@ -5,7 +5,7 @@ import {   iApplication, jobs,  newJobPost } from "../../interfaces"
 
 
 
-export const Getjobs = createAction('[jobs]-jobs')
+export const Getjobs = createAction('[jobs]-jobs', props<{page :1 , pageSize:10}>())
 export const GetjobsSuccess = createAction('[GetjobsSuccess]-GetjobsSuccess',props<{job:jobs[]}>())
 export const GetjobsFailure = createAction('[GetjobsFailure]-GetjobsFailure',props<{jobError:string}>())
 

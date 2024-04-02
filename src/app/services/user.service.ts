@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AddUserSuccess, Loggedusers, Newusers, iusers, loggedUserSuccess } from '../interfaces';
+import { AddUserSuccess, Loggedusers, Newusers, iusers, loggedUserSuccess, userDeletedSuccess } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +24,11 @@ export class UserService {
 
   getUserByID(UserID:number):Observable<iusers>{
     return this.http.get<iusers>(`http://localhost:4000/user/${UserID}`)
+  }
+  deleteUser(UserID:number):Observable<userDeletedSuccess>{
+    return this.http.delete<userDeletedSuccess>(`http://localhost:4000/admin/delete/${UserID}`)
+  }
+  getUsers():Observable<iusers[]>{
+    return this.http.get<iusers[]>('http://localhost:4000/user')
   }
 }

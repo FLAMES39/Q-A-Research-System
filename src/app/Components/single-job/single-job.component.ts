@@ -20,7 +20,7 @@ export class SingleJobComponent implements OnInit{
   job!:Observable<jobs>
   ngOnInit(): void {
     this.route.params.subscribe( (j:Params)=>{
-      this.store.dispatch(jobAction.Getjobs())
+      this.store.dispatch(jobAction.Getjobs({page:1 , pageSize:10}))
       this.store.dispatch(jobAction.GetJobByIdSuccess({jobs:j['jobs']}))
       let jobID = j['JobID']
       this.job=this.jobService.getJobsById(j['JobID'])
