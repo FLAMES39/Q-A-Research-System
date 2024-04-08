@@ -1,0 +1,40 @@
+<div class="profile-container">
+    <div class="profile-header">
+      <div class="profile-picture">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4eMoz7DH8l_Q-iCzSc1xyu_C2iryWh2O9_FcDBpY04w&s" alt="Profile Picture">
+      </div>
+      <h1>Public Profile</h1>
+      <button class="edit-profile-btn" (click)="onUpdateForm()">Edit Profile</button>
+    </div>
+  
+    <form [formGroup]="updateUserDataForm" (ngSubmit)="updateUserProfile(updateUserDataForm.value.UserID, updateUserDataForm.value)" *ngIf="showForm ">
+      <div *ngIf="user">
+        <div class="form-group">
+          <label for="Name">Name</label>
+          <input type="text" id="Name" formControlName="Name" >
+        </div>
+        <div class="form-group">
+          <label for="Email">Email</label>
+          <input type="email" id="Email" formControlName="Email" >
+        </div>
+        <div class="form-group">
+          <label for="Bio">Bio</label>
+          <textarea id="Bio" formControlName="Bio" ></textarea>
+        </div>
+      </div>
+  
+      <div class="skills-section" formArrayName="moreControls">
+        <label>Skills</label>
+        <button type="button" (click)="addSkill()">Add Skill</button>
+        <div class="skills" *ngFor="let control of getControls(); let i = index" [formGroupName]="i">
+          <input type="text" [formControlName]="i">
+          <button type="button" (click)="removerControl(i)">Remove</button>
+        </div>
+      </div>
+  
+      <div class="form-actions">
+        <button type="submit" class="save-btn" >Save Changes</button>
+      </div>
+    </form>
+  </div>
+  

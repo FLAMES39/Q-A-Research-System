@@ -77,6 +77,19 @@ export class userEffects{
             })
         )
     })
+    updateUser$ = createEffect( ()=>{
+        return this.action$.pipe(
+            ofType(UserActions.updatedUser),
+            mergeMap( action =>{
+                return this.userService.updateUser(action.UserID,action.updatedUser).pipe(
+                    map( updatedUser =>{
+                        return UserActions.updatedUserSuccess({updatedUser})
+                    }),
+                    catchError( error => of(UserActions.getUserByIDFailure({message:error})))
+                )
+            })
+        )
+    })
     deletUser$= createEffect(()=>{
         return this.action$.pipe(
             ofType(UserActions.DeleteUser),

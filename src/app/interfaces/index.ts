@@ -8,6 +8,7 @@ export interface iusers {
     Role: string,
     IsDeleted:number
     bio:string
+    skills?:string
 }
 
 export interface Newusers {
@@ -35,6 +36,7 @@ export interface loggedUserSuccess{
     role:string
     token:string
     Name:string
+    
     
 }
 export interface iCourses{

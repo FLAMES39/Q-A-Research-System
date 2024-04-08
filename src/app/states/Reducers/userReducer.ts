@@ -10,13 +10,15 @@ export interface userinterface{
     getUsersError:string
     userRegistrationSuccess:string
     userRegistrationFailure:string
-    userLoginSuccess: string
+    userLoginSuccess:string
     userLoginFailure:string
     getUserByIDSuccess: iusers | null 
     getUserByIDFailure: string
     UserID: number
     DeleteUserSuccess:string
     DeleteUserFailure:string
+    updatedUserSuccess:iusers | null
+    updatedUserFailure:string
    
     
 }
@@ -26,13 +28,15 @@ const initialiState:userinterface={
     getUsersError: "",
     userRegistrationSuccess: "",
     userRegistrationFailure: "",
-    userLoginSuccess: "",
-    userLoginFailure: "",
+    userLoginSuccess: '',
+    userLoginFailure: '',
     getUserByIDSuccess: null,
     getUserByIDFailure: "",
     UserID: 0,
     DeleteUserSuccess: "",
-    DeleteUserFailure: ""
+    DeleteUserFailure: "",
+    updatedUserSuccess: null,
+    updatedUserFailure: ""
 }
 
 const userRegisterState= createFeatureSelector<userinterface>('user')
@@ -75,7 +79,7 @@ export const userReducer = createReducer(
     on(userActions.userLoginFailure,(state,action):userinterface=>{
         return{
             ...state,
-            userLoginSuccess: "",
+            userLoginSuccess: '',
             userLoginFailure:action.message
         }
     }),
@@ -131,6 +135,22 @@ export const userReducer = createReducer(
             ...state,
             DeleteUserFailure:action.message,
             DeleteUserSuccess: ''
+
+        }
+    }),
+    on(userActions.updatedUserSuccess,(state, action):userinterface=>{
+        return{
+            ...state,
+            updatedUserSuccess:action.updatedUser,
+            DeleteUserSuccess: ''
+
+        }
+    }),
+    on(userActions.updatedUserFailure,(state, action):userinterface=>{
+        return{
+            ...state,
+            updatedUserFailure:action.message,
+            updatedUserSuccess: null
 
         }
     }),

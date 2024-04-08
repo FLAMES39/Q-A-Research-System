@@ -28,6 +28,9 @@ export const DeleteUser=createAction('[DeleteUser]-DeleteUser',props<{UserID:num
 export const DeleteUserSuccess=createAction('[DeleteUserSuccess]-DeleteUserSuccess',props<{message:string}>())
 export const DeleteUserFailure=createAction('[DeleteUserFailure]-DeleteUserFailure',props<{message:string}>())
 
+export const updatedUser=createAction('[updatedUser]-updatedUser',props<{UserID:number,updatedUser:iusers}>())
+export const updatedUserSuccess=createAction('[updatedUserSuccess]-updatedUserSuccess',props<{updatedUser:iusers}>())
+export const updatedUserFailure=createAction('[updatedUserFailure]-updatedUserFailure',props<{message:string}>())
 
 
 

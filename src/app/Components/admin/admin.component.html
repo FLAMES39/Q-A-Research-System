@@ -15,6 +15,9 @@
           <li (click)="toggleShowJobs()">
             <img src="../../../assets/icons/projects.svg" alt="Questions" /><span>Jobs</span>
           </li>
+          <li (click)="toggleShowCompanies()">
+            <img src="../../../assets/icons/projects.svg" alt="Companies" /><span>Companies</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -49,6 +52,22 @@
         </div>
         <ng-template #noUsers>
           <p>No users found</p>
+        </ng-template>
+      </div>
+      <div *ngIf="showCompanies">
+        <div *ngIf="companies.length > 0; else noJobs">
+          <div class="question-card" *ngFor="let company of companies">
+            <div class="question-section">
+              <h1>{{ company.Name }}</h1>
+              <h5>{{ company.Description }}</h5>
+            </div>
+            <div class="delete-section">
+              <img src="../../../assets/icons/delete-icon.svg" alt="Delete company" (click)="deleteComapny(company.CompanyID)" />
+            </div>
+          </div>
+        </div>
+        <ng-template #noJobs>
+          <p>No jobs available</p>
         </ng-template>
       </div>
     </div>

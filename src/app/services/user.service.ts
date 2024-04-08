@@ -31,4 +31,7 @@ export class UserService {
   getUsers():Observable<iusers[]>{
     return this.http.get<iusers[]>('http://localhost:4000/user')
   }
+  updateUser(UserID:number,updatedUser:iusers):Observable<iusers>{
+    return this.http.put<iusers>(`http://localhost:4000/user/${UserID}`,updatedUser)
+  }
 }

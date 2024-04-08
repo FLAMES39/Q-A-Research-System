@@ -16,12 +16,13 @@ import { courseEffects } from './states/Effects/coursesEffects';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { applicationEffects } from './states/Effects/applicationEffects';
 import { applicationsReducers } from './states/Reducers/applicationReducers';
+import { CompanyReducers } from './states/Reducers/coursesReducers';
 
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), 
     provideClientHydration(), 
-    provideStore({user:userReducer, jobs:jobReducers,applications:applicationsReducers}),
+    provideStore({user:userReducer, jobs:jobReducers,applications:applicationsReducers,company:CompanyReducers}),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), 
     provideEffects([userEffects,jobEffects,courseEffects,applicationEffects]),
     provideHttpClient(withFetch()), provideAnimationsAsync()]

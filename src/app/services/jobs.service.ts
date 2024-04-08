@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { iApplication, jobAddedSuccessful, jobAppliedSuccessful, jobDeletedSuccess, jobDeletedSuccessful, jobWithdrwanSuccessful, jobs, newJobPost,  updatedJobPostSuccess } from '../interfaces';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +41,18 @@ export class JobsService {
   }
 
   DeleteJob(JobID:number):Observable<jobDeletedSuccess>{
-    return this.http.delete<jobDeletedSuccess>(`http://localhost:4000/jobs/${JobID}`)
+    return this.http.delete<jobDeletedSuccess>(`http://localhost:4000/admin/delete/delete/job/${JobID}`)
+  }
+
+
+  searchJobs(term: string): Observable<jobs[]> {
+    const params = new HttpParams().set('term', term);
+
+    return this.http.get<jobs[]>('http://localhost:4000/jobs/search', { params }).pipe(
+      catchError((error: any) => {
+        console.error('Error searching jobs:', error);
+        return throwError('Error searching jobs');
+      })
+    );
   }
 }

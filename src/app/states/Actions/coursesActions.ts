@@ -29,3 +29,8 @@ export const GetCompanyById=createAction('[GetcompanyById]-GetcompanyById',props
 export const GetDepartments = createAction('[Departments]-getCompany')
 export const GetDepartmentsSuccess = createAction('[Departments]-GetDepartmentsSuccess',props<{Departments:iDepartments[]}>())
 export const GetDepartmentsFailure = createAction('[Departments]-GetDepartmentsFailure',props<{message:string}>())
+
+
+export const DeleteCompany=createAction('[DeleteCompany]-DeleteCompany',props<{companyID:number}>())
+export const DeleteCompanySuccess=createAction('[DeleteCompanySuccess]-DeleteCompanySuccess',props<{message:string}>())
+export const DeleteCompanyFailure=createAction('[DeleteCompanyFailure]-DeleteCompanyFailure',props<{message:string}>())

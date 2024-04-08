@@ -3,7 +3,7 @@
    
     <div class="navleft">
       <a routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Applly Job</a>
-      <a href="http://localhost:57050/">Query Help</a>
+      <a href="http://localhost:55471">Query Help</a>
       <a routerLink="/jobs" routerLinkActive="active">Home</a>
       <a routerLink="/compReg" routerLinkActive="active" >Company</a>
       <a routerLink="/dashboard" routerLinkActive="active" *ngIf="authservice.isLoggeIn() && authservice.getRole()">Dashboard</a>
@@ -23,10 +23,16 @@
   </div>
   
   <div class="main-image">
-    <div class="search-container">
-      <input type="text" placeholder="Search Company/Job..." class="search-input"/>
-      <button class="search-button">🔍</button> 
-    </div>
+    <form (ngSubmit)="search()">
+      <div class="search-container">
+        <input type="text" [(ngModel)]="searchJob" name="searchJob" placeholder="Search Company/Job..." class="search-input"/>
+        <button class="search-button" type="submit">🔍</button> 
+      </div>
+    </form>
+    <!-- <form (ngSubmit)="search()">
+      <input type="text" [(ngModel)]="searchJob" name="searchJob" placeholder="Search">
+      <button type="submit">Search</button>
+    </form> -->
     <img src="https://masomo.mut.ac.ke/pluginfile.php/1/theme_academi/slide1image/1708609573/maya-maceka-yW-Qgw_IJXg-unsplash.jpg" alt="Descriptive Text">
   </div>
   

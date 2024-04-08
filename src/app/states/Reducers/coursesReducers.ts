@@ -14,7 +14,8 @@ export interface  companyInterface{
     GetCompanyByIdSuccess:iCompanies | null
     GetCompanyByIdFailure:string
     GetDepartmentsFailure:string
-    
+    DeleteCompanySuccess:string
+    DeleteCompanyFailure:string
 }
 
 
@@ -30,7 +31,9 @@ const initialState:companyInterface={
     GetDepartmentsSuccess: null,
     GetDepartmentsFailure: "",
     loggedCompanySuccess: "",
-    loggedCompanyFailure: ""
+    loggedCompanyFailure: "",
+    DeleteCompanySuccess: "",
+    DeleteCompanyFailure: ""
 }
 
 
@@ -126,6 +129,22 @@ export const CompanyReducers =createReducer(
             GetDepartmentsFailure:action.message,
             GetDepartmentsSuccess: null
         }
-    })
+    }),
+    on(courseActions.DeleteCompanySuccess,(state, action):companyInterface=>{
+        return{
+            ...state,
+            DeleteCompanySuccess:action.message,
+            DeleteCompanyFailure: ''
+
+        }
+    }),
+    on(courseActions.DeleteCompanyFailure,(state, action):companyInterface=>{
+        return{
+            ...state,
+            DeleteCompanyFailure:action.message,
+            DeleteCompanySuccess: ''
+
+        }
+    }),
 
 )

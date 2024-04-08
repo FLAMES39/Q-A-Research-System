@@ -47,7 +47,17 @@ export class courseEffects {
         )
     })
 
-
+    deletCompany$= createEffect(()=>{
+        return this.action$.pipe(
+            ofType(courseAction.DeleteCompany),
+            mergeMap(action=>{
+                return this.companyservice.deleteCompany(action.companyID).pipe(
+                    map( msg => courseAction.DeleteCompanySuccess({message:msg.message})),
+                    catchError(error => of(courseAction.DeleteCompanyFailure({message:error})))
+                )
+            })
+        )
+    })
     loggedCompany$ = createEffect( ()=>{
         return this.action$.pipe(
             ofType(courseAction.LoggedCompany),
