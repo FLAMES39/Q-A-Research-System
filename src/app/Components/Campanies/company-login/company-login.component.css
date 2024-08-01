@@ -1,4 +1,16 @@
 /* Base container styles */
+body, html {
+  height: 100vh;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('https://d2o2utebsixu4k.cloudfront.net/media/images/blogs/share_image/8846ed9a-55b2-4486-b1ee-977703b7611f.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 .login-container {
     max-width: 400px;
     margin: 0 auto;
@@ -6,6 +18,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
+    
   }
   
   /* Form title */

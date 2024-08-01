@@ -19,6 +19,9 @@ import { jobEffects } from './states/Effects/JobEffects';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { jobReducers } from './states/Reducers/JobReducers';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+
 
 @NgModule({
     declarations: [
@@ -32,6 +35,7 @@ import { jobReducers } from './states/Reducers/JobReducers';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
+        FontAwesomeModule,
         RouterModule,
         ReactiveFormsModule,
         MatDatepickerModule,

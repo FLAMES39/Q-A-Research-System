@@ -1,35 +1,37 @@
-<!-- company-login.component.html -->
+<body>
+  <!-- company-login.component.html -->
 <div class="login-container">
-    <form class="login-form" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-      <h2 class="form-title">Company Login</h2>
-  
-      <div class="form-group" >
-        <label for="Email">Email Address</label>
-        <input type="Email" id="Email" formControlName="Email" placeholder="Enter Your Email">
-        <div class="error"
-         *ngIf="!loginForm.get('Email')?.valid && loginForm.get('Email')?.touched">
-         <p *ngIf="loginForm.get('Email')!.errors!['required']">Email is required</p>
-      
-        </div>
+  <form class="login-form" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    <h2 class="form-title">Company Login</h2>
+
+    <div class="form-group" >
+      <label for="Email">Email Address</label>
+      <input type="Email" id="Email" formControlName="Email" placeholder="Enter Your Email">
+      <div class="error"
+       *ngIf="!loginForm.get('Email')?.valid && loginForm.get('Email')?.touched">
+       <p *ngIf="loginForm.get('Email')!.errors!['required']">Email is required</p>
+    
       </div>
-  
-      <div class="loginForm-group">
-        <label for="Password">Password</label>
-        <input type="Password" id="Password" formControlName="Password" placeholder="Enter Your Password">
-        <p class="error"
-            *ngIf="!loginForm.get('Password')?.valid && loginForm.get('Password')?.touched">
-            password is required
-        </p>
-      </div>
-  
-      <button type="submit" class="submit-btn" (click)="loginCompany()" >Log in</button>
-  
-      <div class="alternative-login">
-        <button type="button" class="facebook-btn">Continue with Facebook</button>
-        <button type="button" class="google-btn">Continue with Google</button>
-      </div>
-  
-      <p class="signup-text">Don't have an account? <a href="/compReg">Sign up now</a></p>
-    </form>
-  </div>
-  
+    </div>
+
+    <div class="loginForm-group">
+      <label for="Password">Password</label>
+      <input type="Password" id="Password" formControlName="Password" placeholder="Enter Your Password">
+      <p class="error"
+          *ngIf="!loginForm.get('Password')?.valid && loginForm.get('Password')?.touched">
+          password is required
+      </p>
+    </div>
+
+    <button type="submit" class="submit-btn" (click)="loginCompany()" >Log in</button>
+
+    <div class="alternative-login">
+      <button type="button" class="facebook-btn">Continue with Facebook</button>
+      <button type="button" class="google-btn">Continue with Google</button>
+    </div>
+
+    <p class="signup-text">Don't have an account? <a href="/compReg">Sign up now</a></p>
+  </form>
+</div>
+
+</body>
