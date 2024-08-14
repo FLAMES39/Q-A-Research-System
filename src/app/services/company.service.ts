@@ -14,6 +14,7 @@ export class CompanyService {
     return this.http.post<companyAddedSuccess>('http://localhost:4000/companies',newCompany)
   }
 
+
   loggedCompany(loggedCompany:iCompanies):Observable<companyLoggedSuccess>{
     return this.http.post<companyLoggedSuccess>('http://localhost:4000/companies/login', loggedCompany)
   }
